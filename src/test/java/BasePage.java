@@ -1,6 +1,3 @@
-package common;
-
-import conditions.Conditions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -88,5 +85,4 @@ public class BasePage {
     }
 
 }
-
 
