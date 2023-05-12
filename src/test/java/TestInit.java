@@ -1,0 +1,25 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+public class TestInit extends Assert {
+    public WebDriver driver;
+
+    @BeforeMethod
+    public void setup() {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions option = new ChromeOptions();
+        option.addArguments("--remote-allow-origins=*");
+        driver = new ChromeDriver(option);
+        driver.get("https://www.mcdonalds.com/ua/uk-ua.html");
+        driver.manage().window().maximize();
+    }
+    @AfterMethod
+    public void closeTest(){
+        driver.quit();
+    }
+}
