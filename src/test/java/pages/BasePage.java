@@ -1,3 +1,6 @@
+package pages;
+
+import conditions.Conditions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,10 +13,6 @@ public class BasePage {
 
     public JavascriptExecutor javascriptExecutor;
     protected WebDriverWait wait;
-
-    public BasePage(JavascriptExecutor javascriptExecutor) {
-        this.javascriptExecutor = javascriptExecutor;
-    }
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -82,6 +81,10 @@ public class BasePage {
 
     protected List<WebElement> getElementsByXpath(String locator) {
         return waitElements(locator, Conditions.PRESENT);
+    }
+
+    public static void scrollToElement() {
+
     }
 
 }

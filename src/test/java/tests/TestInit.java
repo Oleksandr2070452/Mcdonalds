@@ -1,3 +1,5 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,8 +20,9 @@ public class TestInit extends Assert {
         driver.get("https://www.mcdonalds.com/ua/uk-ua.html");
         driver.manage().window().maximize();
     }
+
     @AfterMethod
-    public void closeTest(){
+    public void closeTest() {
         driver.quit();
     }
 }
