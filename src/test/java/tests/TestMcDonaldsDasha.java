@@ -29,10 +29,9 @@ public class TestMcDonaldsDasha extends TestInit {
     public void checkBtnWorkPlace() throws InterruptedException {
         WebElement workPlaceBtn = driver.findElement(By.xpath("//span[contains(text(),'Робочі місця')]"));
         workPlaceBtn.click();
+        WebElement workPlaceTitle = driver.findElement(By.xpath("//h1[contains(text(),'Робочі місця')]"));
 
         Assert.assertTrue(driver.getCurrentUrl().contains("/working_places.html"));
-
-        WebElement workPlaceTitle = driver.findElement(By.xpath("//h1[contains(text(),'Робочі місця')]"));
         Assert.assertTrue(workPlaceTitle.isDisplayed());
     }
 }
