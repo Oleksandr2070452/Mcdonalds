@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -97,5 +98,18 @@ public class TestMcDonaldsDasha extends TestInit {
         jobFeaturesButton.click();
         
         Assert.assertTrue(jobFeaturesButton.getAttribute("class").contains("active"));
+    }
+    @Test(description = "SPAC-35")
+    public void googlePlayButton() throws InterruptedException {
+
+        WebElement gPlayButton = driver.findElement(By.xpath(
+                "//div[@class='cmp-footer__apps']/div[2]"));
+        gPlayButton.click();
+        gPlayButton.click();
+
+        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tab.get(1));
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("mcdonalds.mobileapp"));
     }
 }
