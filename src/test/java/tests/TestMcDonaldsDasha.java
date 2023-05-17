@@ -69,4 +69,29 @@ public class TestMcDonaldsDasha extends TestInit {
 
         Assert.assertTrue(totalPrice > 0, "Total price is not greater than 0.");
     }
+
+    @Test(description = "SPAC-34")
+    public void testQuestionsAndAnswers() {
+        WebElement zapBtn = driver.findElement(By.xpath(
+                "//div[@class='cmp-footer__nav-links']//" +
+                        "li[contains(@data-cmp-data-layer, 'zapitannja-ta-vidpovidi/')]"));
+        zapBtn.click();
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("/zapitannja-ta-vidpovidi/"));
+
+        WebElement employmentButton = driver.findElement(By.xpath(
+                "//div[@class='faq_tab_choose-list']/div[@data-tab='1']"));
+        employmentButton.click();
+        Assert.assertTrue(employmentButton.getAttribute("class").contains("active"));
+
+        WebElement generalQuestionsButton = driver.findElement(By.xpath(
+                "//div[@class='faq_tab_choose-list']/div[@data-tab='2']"));
+        generalQuestionsButton.click();
+        Assert.assertTrue(generalQuestionsButton.getAttribute("class").contains("active"));
+
+        WebElement jobFeaturesButton = driver.findElement(By.xpath(
+                "//div[@class='faq_tab_choose-list']/div[@data-tab='3']"));
+        jobFeaturesButton.click();
+        Assert.assertTrue(jobFeaturesButton.getAttribute("class").contains("active"));
+    }
 }
