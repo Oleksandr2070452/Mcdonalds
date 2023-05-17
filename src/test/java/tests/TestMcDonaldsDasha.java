@@ -34,4 +34,39 @@ public class TestMcDonaldsDasha extends TestInit {
         Assert.assertTrue(driver.getCurrentUrl().contains("/working_places.html"));
         Assert.assertTrue(workPlaceTitle.isDisplayed());
     }
+
+    @Test(description = "SPAC-33")
+    public void testMcDonaldsSalaryCalculator() {
+        WebElement salaryCalculatorButton = driver.findElement(By.xpath(
+                "//span[contains(text(),'Зарплатний калькулятор')]"));
+        salaryCalculatorButton.click();
+
+        WebElement dropDownBtn = driver.findElement(By.xpath(
+                "//label[@for='calc-city']/following-sibling::div//b"));
+        dropDownBtn.click();
+        WebElement citySelect = driver.findElement(By.xpath("//li[@data-index='24']"));
+        citySelect.click();
+
+        WebElement dropDownBut = driver.findElement(By.xpath("//select[@id='daynight']/../.."));
+        dropDownBut.click();
+        WebElement employmentSelect = driver.findElement(By.xpath(
+                "//label[@for='daynight']/following-sibling::div//li"));
+        employmentSelect.click();
+
+        WebElement canWork = driver.findElement(By.xpath(
+                "//label[@for='select_time']/following-sibling::div//span"));
+        canWork.click();
+        WebElement timeWork = driver.findElement(By.xpath(
+                "//label[@for='select_time']/following-sibling::div//li[2]"));
+        timeWork.click();
+
+        WebElement calculateButton = driver.findElement(By.xpath("//a[@id='js-calculator-form-btn']"));
+        calculateButton.click();
+
+        WebElement totalPriceElement = driver.findElement(By.xpath("(//h3[@class='js-total-price'])"));
+        String totalPriceText = totalPriceElement.getText().replace(" грн.", "");
+        double totalPrice = Double.parseDouble(totalPriceText);
+
+        Assert.assertTrue(totalPrice > 0, "Total price is not greater than 0.");
+    }
 }
