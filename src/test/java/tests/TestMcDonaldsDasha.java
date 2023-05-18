@@ -105,7 +105,7 @@ public class TestMcDonaldsDasha extends TestInit {
         WebElement gPlayButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[2]"));
         gPlayButton.click();
-        switchToTab(driver, 1);
+        switchToTab(driver,  1);
 
         assertTrue(driver.getCurrentUrl().contains("mcdonalds.mobileapp"));
     }
