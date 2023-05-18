@@ -116,6 +116,7 @@ public class TestMcDonaldsDasha extends TestInit {
     }
     @Test(description = "SPAC-36")
     public void appStoreButton() throws InterruptedException {
+        
         WebElement aStoreButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[1]"));
         aStoreButton.click();
@@ -126,9 +127,9 @@ public class TestMcDonaldsDasha extends TestInit {
         for (String window : windows) {
             if (!window.equals(currentWindow)) {
                 driver.switchTo().window(window);
+                
                 Assert.assertTrue(driver.getCurrentUrl().contains("app/mcdonalds"));
             }
         }
     }
-
 }
