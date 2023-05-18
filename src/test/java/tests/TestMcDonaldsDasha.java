@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static java.lang.Thread.sleep;
 
@@ -73,7 +74,7 @@ public class TestMcDonaldsDasha extends TestInit {
 
     @Test(description = "SPAC-34")
     public void testQuestionsAndAnswers() {
-        
+
         WebElement zapBtn = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__nav-links']//" +
                         "li[contains(@data-cmp-data-layer, 'zapitannja-ta-vidpovidi/')]"));
@@ -84,21 +85,22 @@ public class TestMcDonaldsDasha extends TestInit {
         WebElement employmentButton = driver.findElement(By.xpath(
                 "//div[@class='faq_tab_choose-list']/div[@data-tab='1']"));
         employmentButton.click();
-        
+
         Assert.assertTrue(employmentButton.getAttribute("class").contains("active"));
 
         WebElement generalQuestionsButton = driver.findElement(By.xpath(
                 "//div[@class='faq_tab_choose-list']/div[@data-tab='2']"));
         generalQuestionsButton.click();
-        
+
         Assert.assertTrue(generalQuestionsButton.getAttribute("class").contains("active"));
 
         WebElement jobFeaturesButton = driver.findElement(By.xpath(
                 "//div[@class='faq_tab_choose-list']/div[@data-tab='3']"));
         jobFeaturesButton.click();
-        
+
         Assert.assertTrue(jobFeaturesButton.getAttribute("class").contains("active"));
     }
+
     @Test(description = "SPAC-35")
     public void googlePlayButton() throws InterruptedException {
 
@@ -111,5 +113,23 @@ public class TestMcDonaldsDasha extends TestInit {
         driver.switchTo().window(tab.get(1));
 
         Assert.assertTrue(driver.getCurrentUrl().contains("mcdonalds.mobileapp"));
+    }
+    @Test(description = "SPAC-36")
+    public void appStoreButton() throws InterruptedException {
+        
+        WebElement aStoreButton = driver.findElement(By.xpath(
+                "//div[@class='cmp-footer__apps']/div[1]"));
+        aStoreButton.click();
+
+        String currentWindow = driver.getWindowHandle();
+        Set<String> windows = driver.getWindowHandles();
+
+        for (String window : windows) {
+            if (!window.equals(currentWindow)) {
+                driver.switchTo().window(window);
+                
+                Assert.assertTrue(driver.getCurrentUrl().contains("app/mcdonalds"));
+            }
+        }
     }
 }
