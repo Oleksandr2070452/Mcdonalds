@@ -151,4 +151,23 @@ public class TestMcDonaldsDasha extends TestInit {
 
         assertEquals(INSTAGRAM_LABEL, actualText);
     }
+
+    @Test(description = "SPAC-38")
+    public void twitterButtonTest() throws InterruptedException {
+        scrollDown(driver);
+        sleep(500);
+        WebElement twitBtn = driver.findElement(By.xpath(
+                "//div[@data-title='Twitter']"));
+        twitBtn.click();
+        switchToTab(driver, 1);
+        sleep(1000);
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("/twitter.com/McDonaldsUA"));
+
+        sleep(1000);
+        WebElement instTittle = driver.findElement(By.xpath(
+                "//h2"));
+
+        Assert.assertTrue(instTittle.getText().contains("McDonald's"));
+    }
 }
