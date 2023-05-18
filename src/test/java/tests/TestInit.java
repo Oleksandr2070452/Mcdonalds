@@ -8,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.util.ArrayList;
+
 public class TestInit extends Assert {
     public WebDriver driver;
 
@@ -24,5 +26,11 @@ public class TestInit extends Assert {
     @AfterMethod
     public void closeTest() {
         driver.quit();
+    }
+
+    public void switchToTab(WebDriver drv, Integer num) {
+        ArrayList<String> tab = new ArrayList<>
+                (drv.getWindowHandles());
+        drv.switchTo().window(tab.get(num));
     }
 }
