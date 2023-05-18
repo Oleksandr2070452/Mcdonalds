@@ -2,14 +2,19 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
 import static utills.CommonAction.scrollDown;
 
 public class TestMcDonaldsDasha extends TestInit {
+
+    private static final String INSTAGRAM_LABEL = "Instagram";
+
 
     @Test(description = "SPAC-31")
     public void checkSearchFieldTest() throws InterruptedException {
@@ -124,5 +129,26 @@ public class TestMcDonaldsDasha extends TestInit {
                 "//h1[@class='product-header__title app-header__title']"));
 
         assertTrue(mcDtittle.getText().contains("McDonald's"));
+    }
+
+    @Test(description = "SPAC-37")
+    public void instagramButtonTest() throws InterruptedException {
+        scrollDown(driver);
+        sleep(500);
+        WebElement instBtn = driver.findElement(By.xpath(
+                "//div[@data-title='Instagram']/a"));
+        instBtn.click();
+        switchToTab(driver, 1);
+        sleep(1000);
+
+        assertTrue(driver.getCurrentUrl().contains("instagram.com/mcdonaldsukraine/"));
+
+        sleep(1000);
+        WebElement instTittle = driver.findElement(By.xpath(
+                "//div[@class='_aagx']/*[name()='svg']"));
+
+        String actualText = instTittle.getAttribute("aria-label");
+
+        assertEquals(INSTAGRAM_LABEL, actualText);
     }
 }
