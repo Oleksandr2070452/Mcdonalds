@@ -2,10 +2,8 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -114,6 +112,7 @@ public class TestMcDonaldsDasha extends TestInit {
 
     @Test(description = "SPAC-36")
     public void appStoreButtonTest() throws InterruptedException {
+
         WebElement aStoreButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[1]"));
         aStoreButton.click();
