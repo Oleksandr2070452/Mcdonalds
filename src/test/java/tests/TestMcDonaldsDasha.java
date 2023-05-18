@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
+import static utills.CommonAction.scrollDown;
 
 public class TestMcDonaldsDasha extends TestInit {
 
@@ -99,11 +100,10 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-35")
-    public void googlePlayButtonTest() throws InterruptedException {
-
+    public void googlePlayButtonTest() {
+        scrollDown(driver);
         WebElement gPlayButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[2]"));
-        gPlayButton.click();
         gPlayButton.click();
         switchToTab(driver, 1);
 
@@ -111,8 +111,8 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-36")
-    public void appStoreButtonTest() throws InterruptedException {
-
+    public void appStoreButtonTest() {
+        scrollDown(driver);
         WebElement aStoreButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[1]"));
         aStoreButton.click();
@@ -123,6 +123,6 @@ public class TestMcDonaldsDasha extends TestInit {
         WebElement mcDtittle = driver.findElement(By.xpath(
                 "//h1[@class='product-header__title app-header__title']"));
 
-        assertTrue(mcDtittle.getText().toLowerCase().contains("McDonald's"));
+        assertTrue(mcDtittle.getText().contains("McDonald's"));
     }
 }
