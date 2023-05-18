@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -76,12 +75,12 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-34")
-    public void questionsAndAnswersTest() {
+    public void qnaTest() {
 
-        WebElement zapBtn = driver.findElement(By.xpath(
+        WebElement qnaBtn = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__nav-links']//" +
                         "li[contains(@data-cmp-data-layer, 'zapitannja-ta-vidpovidi/')]"));
-        zapBtn.click();
+        qnaBtn.click();
 
         assertTrue(driver.getCurrentUrl().contains("/zapitannja-ta-vidpovidi/"));
 
@@ -107,9 +106,9 @@ public class TestMcDonaldsDasha extends TestInit {
     @Test(description = "SPAC-35")
     public void googlePlayButtonTest() {
         scrollDown(driver);
-        WebElement gPlayButton = driver.findElement(By.xpath(
+        WebElement googlePlayButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[2]"));
-        gPlayButton.click();
+        googlePlayButton.click();
         switchToTab(driver, 1);
 
         assertTrue(driver.getCurrentUrl().contains("mcdonalds.mobileapp"));
@@ -118,36 +117,36 @@ public class TestMcDonaldsDasha extends TestInit {
     @Test(description = "SPAC-36")
     public void appStoreButtonTest() {
         scrollDown(driver);
-        WebElement aStoreButton = driver.findElement(By.xpath(
+        WebElement appStoreButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[1]"));
-        aStoreButton.click();
+        appStoreButton.click();
         switchToTab(driver, 1);
 
         assertTrue(driver.getCurrentUrl().contains("app/mcdonalds"));
 
-        WebElement mcDtittle = driver.findElement(By.xpath(
-                "//h1[@class='product-header__title app-header__title']"));
+        WebElement appHeader = driver.findElement(By.xpath(
+                "//h1"));
 
-        assertTrue(mcDtittle.getText().contains("McDonald's"));
+        assertTrue(appHeader.getText().contains("McDonald's"));
     }
 
     @Test(description = "SPAC-37")
     public void instagramButtonTest() throws InterruptedException {
         scrollDown(driver);
         sleep(500);
-        WebElement instBtn = driver.findElement(By.xpath(
+        WebElement instagramButton = driver.findElement(By.xpath(
                 "//div[@data-title='Instagram']/a"));
-        instBtn.click();
+        instagramButton.click();
         switchToTab(driver, 1);
         sleep(1000);
 
         assertTrue(driver.getCurrentUrl().contains("instagram.com/mcdonaldsukraine/"));
 
         sleep(1000);
-        WebElement instTittle = driver.findElement(By.xpath(
+        WebElement instagramHeader = driver.findElement(By.xpath(
                 "//div[@class='_aagx']/*[name()='svg']"));
 
-        String actualText = instTittle.getAttribute("aria-label");
+        String actualText = instagramHeader.getAttribute("aria-label");
 
         assertEquals(INSTAGRAM_LABEL, actualText);
     }
@@ -156,18 +155,17 @@ public class TestMcDonaldsDasha extends TestInit {
     public void twitterButtonTest() throws InterruptedException {
         scrollDown(driver);
         sleep(500);
-        WebElement twitBtn = driver.findElement(By.xpath(
+        WebElement twitterButton = driver.findElement(By.xpath(
                 "//div[@data-title='Twitter']"));
-        twitBtn.click();
+        twitterButton.click();
         switchToTab(driver, 1);
         sleep(1000);
 
         Assert.assertTrue(driver.getCurrentUrl().contains("/twitter.com/McDonaldsUA"));
 
         sleep(1000);
-        WebElement instTittle = driver.findElement(By.xpath(
-                "//h2"));
+        WebElement twitterTittle = driver.findElement(By.xpath("//h2"));
 
-        Assert.assertTrue(instTittle.getText().contains("McDonald's"));
+        Assert.assertTrue(twitterTittle.getText().contains("McDonald's"));
     }
 }
