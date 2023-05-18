@@ -169,6 +169,5 @@ public class TestMcDonaldsDasha extends TestInit {
                 "//h2"));
 
         Assert.assertTrue(instTittle.getText().contains("McDonald's"));
-
     }
 }
