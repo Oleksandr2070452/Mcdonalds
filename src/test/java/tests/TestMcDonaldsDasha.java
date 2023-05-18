@@ -164,7 +164,7 @@ public class TestMcDonaldsDasha extends TestInit {
         Assert.assertTrue(driver.getCurrentUrl().contains("/twitter.com/McDonaldsUA"));
 
         sleep(1000);
-        WebElement twitterTittle = driver.findElement(By.xpath("//h2"));
+        WebElement twitterTittle = driver.findElement(By.xpath("//h2[@dir='ltr']"));
 
         Assert.assertTrue(twitterTittle.getText().contains("McDonald's"));
     }
