@@ -114,7 +114,7 @@ public class TestMcDonaldsDasha extends TestInit {
 
         Assert.assertTrue(driver.getCurrentUrl().contains("mcdonalds.mobileapp"));
     }
-    @Test(description = "SPAC-35")
+    @Test(description = "SPAC-36")
     public void appStoreButton() throws InterruptedException {
         WebElement aStoreButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[1]"));
