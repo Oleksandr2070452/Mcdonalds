@@ -150,6 +150,5 @@ public class TestMcDonaldsDasha extends TestInit {
         String actualText = instTittle.getAttribute("aria-label");
 
         assertEquals(INSTAGRAM_LABEL, actualText);
-
     }
 }
