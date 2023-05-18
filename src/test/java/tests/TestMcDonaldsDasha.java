@@ -2,8 +2,10 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -124,5 +126,18 @@ public class TestMcDonaldsDasha extends TestInit {
                 "//h1[@class='product-header__title app-header__title']"));
 
         assertTrue(mcDtittle.getText().contains("McDonald's"));
+    }
+    @Test(description = "SPAC-37")
+    public void instagramButton() throws InterruptedException {
+        scrollDown(driver);
+        sleep(500);
+        WebElement instBtn = driver.findElement(By.xpath(
+                "//div[@data-title='Instagram']/a"));
+        instBtn.click();
+
+        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tab.get(1));
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("instagram.com/mcdonaldsukraine/"));
     }
 }
