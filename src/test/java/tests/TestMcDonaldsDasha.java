@@ -13,6 +13,9 @@ import static utills.CommonAction.scrollDown;
 
 public class TestMcDonaldsDasha extends TestInit {
 
+    private static final String INSTAGRAM_LABEL = "Instagram";
+
+
     @Test(description = "SPAC-31")
     public void checkSearchFieldTest() throws InterruptedException {
         driver.findElement(By.xpath("//span[@class='item-text']")).click();
@@ -127,17 +130,26 @@ public class TestMcDonaldsDasha extends TestInit {
 
         assertTrue(mcDtittle.getText().contains("McDonald's"));
     }
+
     @Test(description = "SPAC-37")
-    public void instagramButton() throws InterruptedException {
+    public void instagramButtonTest() throws InterruptedException {
         scrollDown(driver);
         sleep(500);
         WebElement instBtn = driver.findElement(By.xpath(
                 "//div[@data-title='Instagram']/a"));
         instBtn.click();
+        switchToTab(driver, 1);
+        sleep(1000);
 
-        ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tab.get(1));
+        assertTrue(driver.getCurrentUrl().contains("instagram.com/mcdonaldsukraine/"));
 
-        Assert.assertTrue(driver.getCurrentUrl().contains("instagram.com/mcdonaldsukraine/"));
+        sleep(1000);
+        WebElement instTittle = driver.findElement(By.xpath(
+                "//div[@class='_aagx']/*[name()='svg']"));
+
+        String actualText = instTittle.getAttribute("aria-label");
+
+        assertEquals(INSTAGRAM_LABEL, actualText);
+
     }
 }
