@@ -17,6 +17,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofMillis(5000));
+
     }
 
     protected WebElement waitElement(String locator, Conditions conditions) {
@@ -83,9 +84,7 @@ public class BasePage {
         return waitElements(locator, Conditions.PRESENT);
     }
 
-    public static void scrollToElement() {
-
+        public static void scrollForElement(WebElement element, WebDriver driver) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        }
     }
-
-}
-
