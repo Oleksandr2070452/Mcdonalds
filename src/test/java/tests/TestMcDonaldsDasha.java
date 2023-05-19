@@ -4,8 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
+import pages.CareerPage;
+import pages.HomePage;
+import pages.SearchPage;
 
 import static java.lang.Thread.sleep;
 import static utills.CommonAction.scrollDown;
@@ -14,17 +15,18 @@ public class TestMcDonaldsDasha extends TestInit {
 
     private static final String INSTAGRAM_LABEL = "Instagram";
 
-
     @Test(description = "SPAC-31")
-    public void checkSearchFieldTest() throws InterruptedException {
-        driver.findElement(By.xpath("//span[@class='item-text']")).click();
-        driver.findElement(By.xpath("//input[@id='form-text-1673594539']")).sendKeys("BigMac");
-        driver.findElement(By.xpath("//button[@id='button-93a5672f17']")).click();
-        sleep(500);
-        List<WebElement> searchResults = driver.findElements(By.xpath
-                ("//h3[@class='cmp-site-search__result-container--heading']/a"));
+    public void checkSearchFieldTest() {
+        SearchPage searchPage = new SearchPage(driver);
 
-        for (WebElement el : searchResults) {
+        new HomePage(driver)
+                .clickSearchBtn();
+
+        searchPage
+                .setSearchData("BigMac")
+                .clickSearchBtn();
+
+        for (WebElement el : searchPage.getListResult()) {
             assertTrue(el.getText().toLowerCase().contains("біг мак"));
         }
     }
@@ -41,37 +43,20 @@ public class TestMcDonaldsDasha extends TestInit {
 
     @Test(description = "SPAC-33")
     public void mcDonaldsSalaryCalculatorTest() {
-        WebElement salaryCalculatorButton = driver.findElement(By.xpath(
-                "//span[contains(text(),'Зарплатний калькулятор')]"));
-        salaryCalculatorButton.click();
+        CareerPage careerPage = new CareerPage(driver);
 
-        WebElement dropDownBtn = driver.findElement(By.xpath(
-                "//label[@for='calc-city']/following-sibling::div//b"));
-        dropDownBtn.click();
-        WebElement citySelect = driver.findElement(By.xpath("//li[@data-index='24']"));
-        citySelect.click();
+        new HomePage(driver)
+                .clickSalaryCalculatorBtn();
 
-        WebElement dropDownBut = driver.findElement(By.xpath("//select[@id='daynight']/../.."));
-        dropDownBut.click();
-        WebElement employmentSelect = driver.findElement(By.xpath(
-                "//label[@for='daynight']/following-sibling::div//li"));
-        employmentSelect.click();
+        careerPage
+                .selectCity()
+                .selectSchedule()
+                .selectTime()
+                .calculateSalary();
 
-        WebElement canWork = driver.findElement(By.xpath(
-                "//label[@for='select_time']/following-sibling::div//span"));
-        canWork.click();
-        WebElement timeWork = driver.findElement(By.xpath(
-                "//label[@for='select_time']/following-sibling::div//li[2]"));
-        timeWork.click();
-
-        WebElement calculateButton = driver.findElement(By.xpath("//a[@id='js-calculator-form-btn']"));
-        calculateButton.click();
-
-        WebElement totalPriceElement = driver.findElement(By.xpath("(//h3[@class='js-total-price'])"));
-        String totalPriceText = totalPriceElement.getText().replace(" грн.", "");
-        double totalPrice = Double.parseDouble(totalPriceText);
-
-        assertTrue(totalPrice > 0, "Total price is not greater than 0.");
+        assertTrue(careerPage.getPredictedSalary() > 0);
+        assertTrue(careerPage.getLearnMoreBtn().isDisplayed());
+        assertTrue(careerPage.getWantWorkBtn().isDisplayed());
     }
 
     @Test(description = "SPAC-34")
@@ -155,8 +140,7 @@ public class TestMcDonaldsDasha extends TestInit {
     public void twitterButtonTest() throws InterruptedException {
         scrollDown(driver);
         sleep(500);
-        WebElement twitterButton = driver.findElement(By.xpath(
-                "//div[@data-title='Twitter']"));
+        WebElement twitterButton = driver.findElement(By.xpath("//div[@data-title='Twitter']"));
         twitterButton.click();
         switchToTab(driver, 1);
         sleep(1000);
