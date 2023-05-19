@@ -1,13 +1,17 @@
 package pages;
 
 import conditions.Conditions;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.spi.LoggerFactoryBinder;
 
 import java.time.Duration;
 import java.util.List;
-
+@Slf4j
 public class BasePage {
     public WebDriver driver;
 
