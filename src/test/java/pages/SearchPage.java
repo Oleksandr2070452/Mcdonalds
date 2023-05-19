@@ -21,7 +21,6 @@ public class SearchPage extends SearchElements {
         return this;
     }
 
-
     public List<WebElement> getListResult() {
         return getVisibilityOfElementsByXpath(LIST_RESULT);
     }
