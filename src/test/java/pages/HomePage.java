@@ -18,4 +18,14 @@ public class HomePage extends HomeElements {
         getClickableElementByXpath(SALARY_CALCULATOR_BTN).click();
         return this;
     }
+
+    public HomePage clickMenuBtn() {
+        getClickableElementByXpath(MENU_BTN).click();
+        return this;
+    }
+
+    public HomePage clickFullMenuBtn() {
+        getClickableElementByXpath(FULL_MENU_BTN).click();
+        return this;
+    }
 }
