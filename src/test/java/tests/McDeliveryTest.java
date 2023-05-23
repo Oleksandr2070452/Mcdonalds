@@ -6,8 +6,10 @@ import pages.HomePage;
 import pages.McDelivery;
 
 public class McDeliveryTest extends TestInit {
+
     @Test
     public void checkMcDelivery() {
+
         HomePage homePage = new HomePage(driver);
         McDelivery mcDelivery = new McDelivery(driver);
 
@@ -18,5 +20,4 @@ public class McDeliveryTest extends TestInit {
 
         assertTrue(driver.findElement(By.xpath("//img[@src='/media/image/glovo/map_Vinnycya_preview.jpg']")).isDisplayed());
     }
-
 }

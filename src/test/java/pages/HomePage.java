@@ -8,10 +8,20 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
+
     public WebElement getMcDelivery() {
         return driver.findElement(By.xpath("//div[@class='cmp-global-header__primary-nav']//a[@href='/ua/uk-ua/mcdelivery.html']"));
     }
+
     public void clickMcDelivery() {
-       getMcDelivery().click();
+        getMcDelivery().click();
+    }
+
+    public WebElement getFindUs() {
+        return driver.findElement(By.xpath("(//span[@class='icon icon-location'])[2]"));
+    }
+
+    public void clickFindUs() {
+        getFindUs().click();
     }
 }

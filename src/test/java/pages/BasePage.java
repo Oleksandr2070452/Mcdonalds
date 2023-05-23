@@ -1,17 +1,15 @@
 package pages;
 
 import conditions.Conditions;
-import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.spi.LoggerFactoryBinder;
-
 import java.time.Duration;
 import java.util.List;
-@Slf4j
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+
+
 public class BasePage {
     public WebDriver driver;
 
@@ -27,7 +25,7 @@ public class BasePage {
         switch (conditions) {
             case CLICKABLE:
                 try {
-                    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+                    return wait.until(elementToBeClickable(By.xpath(locator)));
                 } catch (WebDriverException ignored) {
                 }
             case VISIBILITY:
@@ -90,6 +88,8 @@ public class BasePage {
     public static void scrollToElement() {
 
     }
-
+    protected WebElement waitUntilElementToBeClickableByXpath(String locator) {
+        return wait.until(elementToBeClickable(By.xpath(locator)));
+    }
 }
 
