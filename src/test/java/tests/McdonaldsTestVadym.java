@@ -9,10 +9,11 @@ import org.testng.annotations.Test;
 public class McdonaldsTestVadym extends TestInit {
     @Test
     public void checkRestaurantInLutskTest() throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
         WebElement McDeliveryBtn = driver.findElement(By.xpath("//div[@class='cmp-global-header__primary-nav']//a[@href='/ua/uk-ua/mcdelivery.html']"));
         McDeliveryBtn.click();
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,250)", "");
         WebElement thereBtn = driver.findElement(By.xpath("//div[@class='main__delivery_info_glovo main__delivery_info_block']//a[@target='_blank']"));
         thereBtn.click();
