@@ -4,10 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CareerPage;
-import pages.HomePage;
-import pages.MenuPage;
-import pages.SearchPage;
+import pages.*;
 
 import static elements.HomeElements.*;
 import static java.lang.Thread.sleep;
@@ -83,18 +80,23 @@ public class TestMcDonaldsDasha extends TestInit {
 
     @Test(description = "SPAC-35")
     public void googlePlayButtonTest() {
+        HomePage homePage = new HomePage(driver);
+        GooglePlayPage googlePlayPage = new GooglePlayPage(driver);
+
         scrollDown(driver);
-        WebElement googlePlayButton = driver.findElement(By.xpath(
-                "//div[@class='cmp-footer__apps']/div[2]"));
-        googlePlayButton.click();
+        homePage
+                .clickGooglePlayBtn();
+
         switchToTab(driver, 1);
 
-        assertTrue(driver.getCurrentUrl().contains("mcdonalds.mobileapp"));
+        assertTrue(getUrl().contains("mcdonalds.mobileapp"));
+        assertTrue(googlePlayPage.getGooglePlayTitle().contains("McDonald's"));
     }
 
     @Test(description = "SPAC-39(36)")
     public void appStoreButtonTest() {
         HomePage homePage = new HomePage(driver);
+        AppStorePage appStorePage = new AppStorePage(driver);
 
         scrollDown(driver);
         homePage
@@ -103,43 +105,37 @@ public class TestMcDonaldsDasha extends TestInit {
         switchToTab(driver, 1);
 
         assertTrue(getUrl().contains("app/mcdonalds"));
-        assertTrue(homePage.getAppHeaderTitle().contains("McDonald's"));
+        assertTrue(appStorePage.getAppHeaderTitle().contains("McDonald's"));
     }
 
     @Test(description = "SPAC-40(37)")
     public void instagramButtonTest() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        InstagramPage instagramPage = new InstagramPage(driver);
+
         scrollDown(driver);
-        sleep(500);
-        WebElement instagramButton = driver.findElement(By.xpath(
-                "//div[@data-title='Instagram']/a"));
-        instagramButton.click();
+        homePage
+                .clickInstagramBtn();
+
         switchToTab(driver, 1);
-        sleep(1000);
 
-        assertTrue(driver.getCurrentUrl().contains("instagram.com/mcdonaldsukraine/"));
-
-        sleep(1000);
-
-        String actualText = instagramHeader.getAttribute("aria-label");
-
-        assertEquals(INSTAGRAM_LABEL, actualText);
+        assertTrue(getUrl().contains("instagram.com/mcdonaldsukraine/"));
+        assertEquals(instagramPage.getLinkFromInstagramBtn(), "Instagram");
     }
 
     @Test(description = "SPAC-41(38)")
     public void twitterButtonTest() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+        TwitterPage twitterPage = new TwitterPage(driver);
+
         scrollDown(driver);
-        sleep(500);
-        WebElement twitterButton = driver.findElement(By.xpath("//div[@data-title='Twitter']"));
-        twitterButton.click();
+        homePage
+                .clickTwitterBtn();
+
         switchToTab(driver, 1);
-        sleep(1000);
 
-        Assert.assertTrue(driver.getCurrentUrl().contains("/twitter.com/McDonaldsUA"));
-
-        sleep(1000);
-        WebElement twitterTittle = driver.findElement(By.xpath("//h2[@dir='ltr']"));
-
-        Assert.assertTrue(twitterTittle.getText().contains("McDonald's"));
+        assertTrue(getUrl().contains("/twitter.com/McDonaldsUA"));
+        assertTrue(twitterPage.getTwitterTitle().contains("McDonald's"));
     }
 
     @Test(description = "SPAC-42(39)")

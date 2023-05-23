@@ -82,5 +82,15 @@ public class HomePage extends HomeElements {
         getClickableElementByXpath(INSTAGRAM_BTN).click();
         return this;
     }
+
+    public HomePage clickGooglePlayBtn() {
+        getClickableElementByXpath(GOOGLE_PLAY_BTN).click();
+        return this;
+    }
+
+    public HomePage clickTwitterBtn() {
+        getClickableElementByXpath(TWITTER_BTN).click();
+        return this;
+    }
 }
 
