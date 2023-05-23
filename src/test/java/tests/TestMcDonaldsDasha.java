@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CareerPage;
 import pages.HomePage;
+import pages.MenuPage;
 import pages.SearchPage;
 
 import static java.lang.Thread.sleep;
@@ -99,7 +100,7 @@ public class TestMcDonaldsDasha extends TestInit {
         assertTrue(driver.getCurrentUrl().contains("mcdonalds.mobileapp"));
     }
 
-    @Test(description = "SPAC-36")
+    @Test(description = "SPAC-39(36)")
     public void appStoreButtonTest() {
         scrollDown(driver);
         WebElement appStoreButton = driver.findElement(By.xpath(
@@ -115,7 +116,7 @@ public class TestMcDonaldsDasha extends TestInit {
         assertTrue(appHeader.getText().contains("McDonald's"));
     }
 
-    @Test(description = "SPAC-37")
+    @Test(description = "SPAC-40(37)")
     public void instagramButtonTest() throws InterruptedException {
         scrollDown(driver);
         sleep(500);
@@ -136,7 +137,7 @@ public class TestMcDonaldsDasha extends TestInit {
         assertEquals(INSTAGRAM_LABEL, actualText);
     }
 
-    @Test(description = "SPAC-38")
+    @Test(description = "SPAC-41(38)")
     public void twitterButtonTest() throws InterruptedException {
         scrollDown(driver);
         sleep(500);
@@ -151,5 +152,15 @@ public class TestMcDonaldsDasha extends TestInit {
         WebElement twitterTittle = driver.findElement(By.xpath("//h2[@dir='ltr']"));
 
         Assert.assertTrue(twitterTittle.getText().contains("McDonald's"));
+    }
+
+    @Test(description = "SPAC-42(39)")
+    public void checkFullMenu() throws InterruptedException {
+
+        new HomePage(driver)
+                .clickMenuBtn()
+                .clickFullMenuBtn();
+
+        assertTrue(new MenuPage(driver).getNumberOfMenuItems().size()>30);
     }
 }
