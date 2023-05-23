@@ -33,4 +33,8 @@ public class TestInit extends Assert {
                 (drv.getWindowHandles());
         drv.switchTo().window(tab.get(num));
     }
+
+    public String getUrl() {
+        return driver.getCurrentUrl();
+    }
 }
