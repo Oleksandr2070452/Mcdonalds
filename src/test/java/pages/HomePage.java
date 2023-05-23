@@ -28,4 +28,17 @@ public class HomePage extends HomeElements {
         getClickableElementByXpath(FULL_MENU_BTN).click();
         return this;
     }
+
+    public HomePage foundationRonaldaBtn() {
+        getClickableElementByXpath(FOUNDATION_RONALDA_BTN).click();
+        return this;
+    }
+
+    public String getTextFoundationRonaldaTitle() {
+        return getVisibilityElementByXpath(FOUNDATION_RONALDA_TITTLE).getText();
+    }
+
+    public String getLinkFromVisitSiteBtn() {
+        return getVisibilityElementByXpath(VISIT_SITE_BTN).getAttribute("href");
+    }
 }

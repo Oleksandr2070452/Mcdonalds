@@ -155,12 +155,24 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-42(39)")
-    public void checkFullMenu() throws InterruptedException {
+    public void fullMenuBtnTest() throws InterruptedException {
 
         new HomePage(driver)
                 .clickMenuBtn()
                 .clickFullMenuBtn();
 
-        assertTrue(new MenuPage(driver).getNumberOfMenuItems().size()>30);
+        assertTrue(new MenuPage(driver).getNumberOfMenuItems().size() > 30);
+    }
+
+    @Test(description = "SPAC-43")
+    public void foundationRonaldaBtnTest() throws InterruptedException {
+        HomePage homePage = new HomePage(driver);
+
+        homePage
+                .foundationRonaldaBtn();
+
+        assertTrue(getUrl().contains("/impact_strategy/"));
+        assertEquals(homePage.getTextFoundationRonaldaTitle(), "Фундація Дім Рональда МакДональда");
+        assertEquals(homePage.getLinkFromVisitSiteBtn(), "http://rmhc.org.ua/");
     }
 }
