@@ -20,11 +20,7 @@ public class McdonaldsTestVadym extends TestInit {
         switchToTab(driver, 1);
         WebElement dropDownChooseTownRestaurant = driver.findElement(By.xpath("(//b[@class='button_select'])[1]"));
         dropDownChooseTownRestaurant.click();
-//        WebElement scrollPanel = driver.switchTo().activeElement();
 
-//        for(int i=0;i<=15; i++) {
-//            scrollPanel.sendKeys(Keys.ARROW_DOWN);
-//        }
         WebElement chooseTownDistrict = driver.findElement(By.xpath("//li[text()='Луцьк']"));
         chooseTownDistrict.click();
 
