@@ -35,4 +35,12 @@ public class McDelivery extends BasePage {
         move.dragAndDropBy(slider, 0, 150).build();
         return this;
     }
+
+    public WebElement getLocationCity() {
+        return driver.findElement(By.xpath("//div[@class='selectric-scroll ps-container ps-theme-default']/ul"));
+    }
+
+    public String getLocationCityText() {
+        return getLocationCity().getText();
+    }
 }
