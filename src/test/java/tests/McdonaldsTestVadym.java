@@ -33,3 +33,4 @@ public class McdonaldsTestVadym extends TestInit {
         assertEquals(lutskMcDonaldsInfo, lutskFinalInfo);
     }
 }
+
