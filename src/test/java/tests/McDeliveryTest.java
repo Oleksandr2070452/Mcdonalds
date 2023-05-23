@@ -15,7 +15,6 @@ public class McDeliveryTest extends TestInit {
 
         homePage.clickMcDelivery();
         mcDelivery.clickCityButton();
-        mcDelivery.moveToCityList();
         mcDelivery.clickVinnytsia();
 
         assertTrue(driver.findElement(By.xpath("//img[@src='/media/image/glovo/map_Vinnycya_preview.jpg']")).isDisplayed());

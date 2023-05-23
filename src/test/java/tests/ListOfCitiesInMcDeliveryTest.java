@@ -22,7 +22,6 @@ public class ListOfCitiesInMcDeliveryTest extends TestInit{
 
         homePage.clickMcDelivery();
         mcDelivery.clickCityButton();
-        mcDelivery.moveToCityList();
 
         String city = mcDelivery.getLocationCityText();
         assertEquals(driver.getCurrentUrl(), resultURLCity);
