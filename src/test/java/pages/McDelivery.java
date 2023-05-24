@@ -32,7 +32,7 @@ public class McDelivery extends BasePage {
 
 
     public WebElement getLocationCity() {
-        return driver.findElement(By.xpath("//div[@class='selectric-scroll ps-container ps-theme-default']/ul"));
+        return driver.findElement(By.xpath("//div[@class='selectric-scroll ps-container ps-theme-default ps-active-y'] | //div[@class='selectric-scroll ps-container ps-theme-default']/ul"));
     }
 
     public String getLocationCityText() {

@@ -9,10 +9,6 @@ public class MobileApp extends BasePage {
         super(driver);
     }
 
-    public void getUrlMobileApp() {
-        driver.get("https://www.mcdonalds.com/ua/uk-ua/eat/gmal.html");
-    }
-
     public WebElement getLogoButton() {
         return driver.findElement(By.xpath("(//img[@src='/content/dam/sites/ua/nfl/icons/Logo_on_white_desktop_Small.jpg'])[2]"));
     }

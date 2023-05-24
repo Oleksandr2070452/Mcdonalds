@@ -92,4 +92,3 @@ public class BasePage {
         return wait.until(elementToBeClickable(By.xpath(locator)));
     }
 }
-

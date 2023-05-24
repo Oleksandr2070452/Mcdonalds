@@ -2,6 +2,7 @@ package tests;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.MobileApp;
 
 public class LogoButtonTest extends TestInit {
@@ -10,8 +11,9 @@ public class LogoButtonTest extends TestInit {
     public void checkLogoButton() {
 
         MobileApp mobileApp = new MobileApp(driver);
+        HomePage homePage = new HomePage(driver);
 
-        mobileApp.getUrlMobileApp();
+        homePage.clickFindUs();
         mobileApp.clickLogoButton();
         assertTrue(driver.findElement(By.xpath("//span[text()='Отримуй знижки та особливі пропозиції']")).isDisplayed());
     }
