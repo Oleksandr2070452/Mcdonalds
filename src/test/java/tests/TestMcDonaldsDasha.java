@@ -94,6 +94,7 @@ public class TestMcDonaldsDasha extends TestInit {
         scrollDown(driver);
         WebElement googlePlayButton = driver.findElement(By.xpath(
                 "//div[@class='cmp-footer__apps']/div[2]"));
+
         googlePlayButton.click();
         switchToTab(driver, 1);
 
