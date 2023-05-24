@@ -27,6 +27,11 @@ public class HomePage extends HomeElements {
         getFindUs().click();
     }
 
+    public HomePage clickOpenRestaurant() {
+        getClickableElementByXpath(OPEN_RESTAURANT).click();
+        return this;
+    }
+
     public HomePage clickSearchBtn() {
         getClickableElementByXpath(SEARCH_BTN).click();
         return this;
