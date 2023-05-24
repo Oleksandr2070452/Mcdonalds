@@ -84,6 +84,7 @@ public class TestMcDonaldsDasha extends TestInit {
         GooglePlayPage googlePlayPage = new GooglePlayPage(driver);
 
         scrollDown(driver);
+
         homePage
                 .clickGooglePlayBtn();
 
