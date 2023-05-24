@@ -11,6 +11,11 @@ public class HomePage extends HomeElements {
         super(driver);
     }
 
+    public HomePage clickInfluenceStrategy() {
+        getClickableElementByXpath(INFLUENCE_STRATEGY).click();
+        return this;
+    }
+
     public WebElement getMcDelivery() {
         return driver.findElement(By.xpath("//div[@class='cmp-global-header__primary-nav']//a[@href='/ua/uk-ua/mcdelivery.html']"));
     }
