@@ -17,4 +17,6 @@ public class HomeElements extends BasePage {
     public static final String FOUNDATION_RONALDA_TITTLE =
             "//div[@id='title-5715acaaad']/h1";
     public static final String VISIT_SITE_BTN = "//a[@class='cmp-teaser__action-link ']";
+    public static final String MORE_HAPPY_MEAL = "//*[@id=\"teaser-99db66b3be\"]/div[2]/div[2]/a";
+    public static final String READ_BOOK_DETAIL = "//*[@id=\"teaser-99816fd854\"]/div[2]/div[2]/a";
 }

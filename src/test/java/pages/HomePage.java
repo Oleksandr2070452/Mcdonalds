@@ -27,6 +27,22 @@ public class HomePage extends HomeElements {
         getFindUs().click();
     }
 
+    public WebElement getReadBookDetail() {
+        return driver.findElement(By.xpath(READ_BOOK_DETAIL));
+    }
+
+    public void clickReadBookDetail() {
+        getReadBookDetail().click();
+    }
+
+    public WebElement getMoreToysInHappyMeal() {
+        return driver.findElement(By.xpath(MORE_HAPPY_MEAL));
+    }
+
+    public void clickMoreToysInHappyMeal() {
+        getMoreToysInHappyMeal().click();
+    }
+
     public HomePage clickSearchBtn() {
         getClickableElementByXpath(SEARCH_BTN).click();
         return this;
