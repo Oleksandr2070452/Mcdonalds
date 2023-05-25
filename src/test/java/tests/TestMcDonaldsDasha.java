@@ -12,8 +12,6 @@ import static utills.CommonAction.scrollDown;
 
 public class TestMcDonaldsDasha extends TestInit {
 
-    private static final String INSTAGRAM_LABEL = "Instagram";
-
     @Test(description = "SPAC-31")
     public void checkSearchFieldTest() {
         SearchPage searchPage = new SearchPage(driver);
@@ -87,6 +85,7 @@ public class TestMcDonaldsDasha extends TestInit {
         GooglePlayPage googlePlayPage = new GooglePlayPage(driver);
 
         scrollDown(driver);
+
         homePage
                 .clickGooglePlayBtn();
 
