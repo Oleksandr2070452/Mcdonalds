@@ -1,6 +1,10 @@
 package pages;
 
+<<<<<<< HEAD
 import conditions.Conditions;
+=======
+import elements.HomeElements;
+>>>>>>> main
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
