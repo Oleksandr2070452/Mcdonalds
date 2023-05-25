@@ -84,7 +84,13 @@ public class BasePage {
         return waitElements(locator, Conditions.PRESENT);
     }
 
-        public static void scrollForElement(WebElement element, WebDriver driver) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        }
+    public static void scrollForElement(WebElement element, WebDriver driver) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+    public static void jsClick(WebElement element, WebDriver driver) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", element);
+    }
+
+}

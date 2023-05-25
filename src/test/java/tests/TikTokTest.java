@@ -6,6 +6,7 @@ import pages.HomePage;
 public class TikTokTest extends TestInit {
     @Test
     public void redirectionOnTikTokTest() {
+
         HomePage homePage = new HomePage(driver);
 
         homePage.redirectionOnTikTokPage();
