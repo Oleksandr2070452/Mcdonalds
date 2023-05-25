@@ -86,6 +86,5 @@ public class BasePage {
     public static void scrollToElement() {
 
     }
-
 }
 

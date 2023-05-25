@@ -11,6 +11,9 @@ import static java.lang.Thread.sleep;
 import static utills.CommonAction.scrollDown;
 
 public class TestMcDonaldsDasha extends TestInit {
+
+    private static final String INSTAGRAM_LABEL = "Instagram";
+
     @Test(description = "SPAC-31")
     public void checkSearchFieldTest() {
         SearchPage searchPage = new SearchPage(driver);
