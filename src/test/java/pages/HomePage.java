@@ -29,9 +29,17 @@ public class HomePage extends HomeElements {
              getClickableElementByXpath(INFLUENCE_STRATEGY).click();
         }
 
+
+    public HomePage clickDeliverFavorite() {
+        getClickableElementByXpath(DELIVER_FAVORITE_DETAILS).click();
+        return this;
+    }
+
+
         public WebElement getArrowInSliderMoveNext () {
             return driver.findElement(By.xpath(ARROW_IN_SLIDER_MOVE_NEXT));
         }
+
 
         public WebElement getLearnMore () {
             return driver.findElement(By.xpath(LEARN_MORE_BTN));

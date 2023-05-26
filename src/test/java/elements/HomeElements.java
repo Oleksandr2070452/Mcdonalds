@@ -18,6 +18,7 @@ public class HomeElements extends BasePage {
     public static final String FOUNDATION_RONALDA_TITTLE =
             "//div[@id='title-5715acaaad']/h1";
     public static final String VISIT_SITE_BTN = "//a[@class='cmp-teaser__action-link ']";
+    public static final String DELIVER_FAVORITE_DETAILS = "//*[@id=\"teaser-2a3a6fa706\"]/div[2]/div[2]/a";
     public static final String INFLUENCE_STRATEGY = "(//nav[@itemtype='http://schema.org/SiteNavigationElement']/ul/li)[10]";
     public static final String OPEN_RESTAURANT = "(//ul[@id='list-750fab3099']/li/a/span)[2]";
     public static final String MORE_HAPPY_MEAL = "//*[@id=\"teaser-99db66b3be\"]/div[2]/div[2]/a";
