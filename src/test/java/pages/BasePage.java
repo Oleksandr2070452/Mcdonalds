@@ -81,7 +81,6 @@ public class BasePage {
         return waitElement(locator, Conditions.PRESENT);
     }
 
-
     protected List<WebElement> getElementsByXpath(String locator) {
         return waitElements(locator, Conditions.PRESENT);
     }
