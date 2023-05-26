@@ -77,12 +77,20 @@ public class HomePage extends HomeElements {
         getFindUs().click();
     }
 
+
+    public HomePage clickOpenRestaurant() {
+        getClickableElementByXpath(OPEN_RESTAURANT).click();
+        return this;
+    }
+
+
     public WebElement getMoreToysInHappyMeal() {
         return driver.findElement(By.xpath(MORE_HAPPY_MEAL));
     }
 
     public void clickMoreToysInHappyMeal() {
        getMoreToysInHappyMeal().click();
+
     }
 
     public HomePage clickSearchBtn() {
