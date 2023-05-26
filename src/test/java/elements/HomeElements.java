@@ -20,6 +20,9 @@ public class HomeElements extends BasePage {
     public static final String VISIT_SITE_BTN = "//a[@class='cmp-teaser__action-link ']";
     public static final String MORE_HAPPY_MEAL = "//*[@id=\"teaser-99db66b3be\"]/div[2]/div[2]/a";
     public static final String READ_BOOK_DETAIL = "//*[@id=\"teaser-99816fd854\"]/div[2]/div[2]/a";
+    public static final String DELIVER_FAVORITE_DETAILS = "//*[@id=\"teaser-2a3a6fa706\"]/div[2]/div[2]/a";
+    public static final String INFLUENCE_STRATEGY = "(//nav[@itemtype='http://schema.org/SiteNavigationElement']/ul/li)[10]";
+    public static final String OPEN_RESTAURANT = "(//ul[@id='list-750fab3099']/li/a/span)[2]";
     public static final String WORK_PLACE_BTN = "//span[contains(text(),'Робочі місця')]";
     public static final String WORK_PLACE_TITTLE = "//div[@id='title-43c10e9974']";
     public static final String QUESTION_AND_ANSWER_BTN =
@@ -31,5 +34,9 @@ public class HomeElements extends BasePage {
     public static final String INSTAGRAM_BTN = "//div[@data-title='Instagram']/a";
     public static final String GOOGLE_PLAY_BTN = "//div[@class='cmp-footer__apps']/div[2]";
     public static final String TWITTER_BTN = "//div[@data-title='Twitter']";
-
+    public static final String WORK_IN_MCDONALDS_BTN = "//div[@id='teaser-d543114359']//a";
+    public static final String ARROW_IN_SLIDER_MOVE_NEXT = "//button[@aria-label='Next']";
+    public static final String LEARN_MORE_BTN = "//*[@id='teaser-4fd499e808']/div[2]/div[2]/a";
+    public static final String FACEBOOK_BTN = "//img[@alt='Facebook']";
+    public static final String TIK_TOK_BTN = "//img[@alt='Tiktok']";
 }

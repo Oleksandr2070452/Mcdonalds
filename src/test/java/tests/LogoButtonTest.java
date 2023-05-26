@@ -15,6 +15,7 @@ public class LogoButtonTest extends TestInit {
 
         homePage.clickFindUs();
         mobileApp.clickLogoButton();
+
         assertTrue(driver.findElement(By.xpath("//span[text()='Отримуй знижки та особливі пропозиції']")).isDisplayed());
     }
 }

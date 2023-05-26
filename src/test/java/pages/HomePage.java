@@ -1,14 +1,74 @@
 package pages;
 
+import conditions.Conditions;
 import elements.HomeElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+
 public class HomePage extends HomeElements {
 
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    public WebElement getWorkInMcdonalds() {
+        return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
+    }
+
+    public void clickInfluenceStrategy() {
+        getClickableElementByXpath(INFLUENCE_STRATEGY).click();
+    }
+
+    public WebElement getReadBookDetail() {
+        return driver.findElement(By.xpath(READ_BOOK_DETAIL));
+    }
+
+    public void clickReadBookDetail() {
+        getReadBookDetail().click();
+    }
+
+    public HomePage clickDeliverFavorite() {
+        getClickableElementByXpath(DELIVER_FAVORITE_DETAILS).click();
+        return this;
+    }
+
+    public WebElement getArrowInSliderMoveNext() {
+        return driver.findElement(By.xpath(ARROW_IN_SLIDER_MOVE_NEXT));
+    }
+
+    public WebElement getLearnMore() {
+        return driver.findElement(By.xpath(LEARN_MORE_BTN));
+    }
+
+    public WebElement getFacebookBtn() {
+        return driver.findElement(By.xpath(FACEBOOK_BTN));
+    }
+
+    public HomePage redirectionOnFacebookPage() {
+        scrollForElement(getFacebookBtn(), driver);
+        waitElement("//img[@alt='Facebook']", Conditions.VISIBILITY);
+        getFacebookBtn().click();
+        ArrayList<String> switchToWindow = new ArrayList<>
+                (driver.getWindowHandles());
+        driver.switchTo().window(switchToWindow.get(1));
+        return this;
+    }
+
+    public WebElement getTikTokBtn() {
+        return driver.findElement(By.xpath(TIK_TOK_BTN));
+    }
+
+    public HomePage redirectionOnTikTokPage() {
+        scrollForElement(getTikTokBtn(), driver);
+        waitElement("//img[@alt='Tiktok']", Conditions.VISIBILITY);
+        getTikTokBtn().click();
+        ArrayList<String> switchToWindow = new ArrayList<>
+                (driver.getWindowHandles());
+        driver.switchTo().window(switchToWindow.get(1));
+        return this;
     }
 
     public WebElement getMcDelivery() {
@@ -27,12 +87,9 @@ public class HomePage extends HomeElements {
         getFindUs().click();
     }
 
-    public WebElement getReadBookDetail() {
-        return driver.findElement(By.xpath(READ_BOOK_DETAIL));
-    }
-
-    public void clickReadBookDetail() {
-        getReadBookDetail().click();
+    public HomePage clickOpenRestaurant() {
+        getClickableElementByXpath(OPEN_RESTAURANT).click();
+        return this;
     }
 
     public WebElement getMoreToysInHappyMeal() {
@@ -127,4 +184,3 @@ public class HomePage extends HomeElements {
         return this;
     }
 }
-
