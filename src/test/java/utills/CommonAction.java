@@ -14,9 +14,12 @@ public class CommonAction {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,800000)");
     }
+<<<<<<< HEAD
+=======
 
     public static void scrollDownLess(WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,2000)");
     }
+>>>>>>> 0feced4b7c26569312b9699fc3d5797a5a4ef08a
 }

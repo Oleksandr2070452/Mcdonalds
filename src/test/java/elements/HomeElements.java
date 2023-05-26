@@ -33,5 +33,4 @@ public class HomeElements extends BasePage {
     public static final String INSTAGRAM_BTN = "//div[@data-title='Instagram']/a";
     public static final String GOOGLE_PLAY_BTN = "//div[@class='cmp-footer__apps']/div[2]";
     public static final String TWITTER_BTN = "//div[@data-title='Twitter']";
-
 }

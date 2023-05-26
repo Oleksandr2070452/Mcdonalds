@@ -7,8 +7,8 @@ import pages.HomePage;
 public class CareerTest extends TestInit {
     @Test
     public void checkRedirectionOnPage() {
-        HomePage homePage = new HomePage(driver);
 
+        HomePage homePage = new HomePage(driver);
         homePage.getWorkInMcdonalds().click();
 
         assertTrue(driver.getCurrentUrl().contains("robota-v-makdonaljdz/"));
