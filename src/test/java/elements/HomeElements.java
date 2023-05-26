@@ -18,9 +18,7 @@ public class HomeElements extends BasePage {
     public static final String FOUNDATION_RONALDA_TITTLE =
             "//div[@id='title-5715acaaad']/h1";
     public static final String VISIT_SITE_BTN = "//a[@class='cmp-teaser__action-link ']";
-
     public static final String OPEN_RESTAURANT = "(//ul[@id='list-750fab3099']/li/a/span)[2]";
-
     public static final String WORK_PLACE_BTN = "//span[contains(text(),'Робочі місця')]";
     public static final String WORK_PLACE_TITTLE = "//div[@id='title-43c10e9974']";
     public static final String QUESTION_AND_ANSWER_BTN =
