@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 
-
 public class HomePage extends HomeElements {
 
     public HomePage(WebDriver driver) {
@@ -20,10 +19,6 @@ public class HomePage extends HomeElements {
     public static final String LEARN_MORE_BTN = "//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']";
     public static final String FACEBOOK_BTN = "//img[@alt='Facebook']";
     public static final String TIK_TOK_BTN = "//img[@alt='Tiktok']";
-
-    public WebElement getWorkInMcdonalds() {
-        return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
-    }
 
     public WebElement getArrowInSliderMoveNext() {
         waitElement("//*[@id='teaser-4fd499e808']//a", Conditions.VISIBILITY);
@@ -42,7 +37,7 @@ public class HomePage extends HomeElements {
     }
 
     public HomePage clickLearnMoreForOpenOurDoors() {
-        jsClick(waitElement("//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']", Conditions.CLICKABLE),driver);
+        jsClick(waitElement("//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']", Conditions.CLICKABLE), driver);
 
         if (driver.getCurrentUrl().contains("item-fcc42de051")) {
             getLearnMore().click();
@@ -66,6 +61,19 @@ public class HomePage extends HomeElements {
 
     public WebElement getTikTokBtn() {
         return driver.findElement(By.xpath(TIK_TOK_BTN));
+    }
+
+    public WebElement getWorkInMcdonalds() {
+        return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
+    }
+
+    public void clickInfluenceStrategy() {
+        getClickableElementByXpath(INFLUENCE_STRATEGY).click();
+    }
+
+    public HomePage clickDeliverFavorite() {
+        getClickableElementByXpath(DELIVER_FAVORITE_DETAILS).click();
+        return this;
     }
 
     public HomePage redirectionOnTikTokPage() {
@@ -94,12 +102,10 @@ public class HomePage extends HomeElements {
         getFindUs().click();
     }
 
-
     public HomePage clickOpenRestaurant() {
         getClickableElementByXpath(OPEN_RESTAURANT).click();
         return this;
     }
-
 
     public WebElement getMoreToysInHappyMeal() {
         return driver.findElement(By.xpath(MORE_HAPPY_MEAL));
@@ -108,6 +114,7 @@ public class HomePage extends HomeElements {
     public void clickMoreToysInHappyMeal() {
         getMoreToysInHappyMeal().click();
     }
+
     public WebElement getPauseBtn() {
         return driver.findElement(By.xpath("//button[@data-cmp-hook-carousel='pause']"));
     }
@@ -196,11 +203,9 @@ public class HomePage extends HomeElements {
         getClickableElementByXpath(GOOGLE_PLAY_BTN).click();
         return this;
     }
-
     public HomePage clickTwitterBtn() {
         getClickableElementByXpath(TWITTER_BTN).click();
         return this;
     }
 }
-
 
