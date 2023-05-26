@@ -1,10 +1,6 @@
 package pages;
 
-<<<<<<< HEAD
 import conditions.Conditions;
-=======
-import elements.HomeElements;
->>>>>>> main
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +11,6 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
-
 
     public static final String WORK_IN_MCDONALDS_BTN = "//div[@id='teaser-d543114359']//a";
     public static final String ARROW_IN_SLIDER_MOVE_NEXT = "//button[@aria-label='Next']";
@@ -88,5 +83,4 @@ public class HomePage extends BasePage {
         getPauseBtn().click();
         return this;
     }
-
 }
