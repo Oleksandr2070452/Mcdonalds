@@ -4,8 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pages.*;
 
-import static elements.HomeElements.EMPLOYMENT_BTN;
-import static elements.HomeElements.GENERAL_QUESTION_BTN;
+import static elements.HomeElements.*;
 import static utills.CommonAction.scrollDown;
 
 public class TestMcDonaldsDasha extends TestInit {
