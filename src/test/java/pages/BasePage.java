@@ -8,9 +8,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class BasePage {
-    public WebDriver driver;
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
+public class BasePage {
+
+    public WebDriver driver;
     public JavascriptExecutor javascriptExecutor;
     protected WebDriverWait wait;
 
@@ -23,7 +25,7 @@ public class BasePage {
         switch (conditions) {
             case CLICKABLE:
                 try {
-                    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+                    return wait.until(elementToBeClickable(By.xpath(locator)));
                 } catch (WebDriverException ignored) {
                 }
             case VISIBILITY:
@@ -78,13 +80,15 @@ public class BasePage {
         return waitElement(locator, Conditions.PRESENT);
     }
 
-
     protected List<WebElement> getElementsByXpath(String locator) {
         return waitElements(locator, Conditions.PRESENT);
     }
 
-    public static void scrollToElement() {
+    public static void scrollForElement(WebElement element, WebDriver driver) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 
+    protected WebElement waitUntilElementToBeClickableByXpath(String locator) {
+        return wait.until(elementToBeClickable(By.xpath(locator)));
     }
 }
-
