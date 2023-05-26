@@ -4,6 +4,7 @@ import conditions.Conditions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofMillis(5000));
+
     }
 
     protected WebElement waitElement(String locator, Conditions conditions) {
@@ -80,14 +82,14 @@ public class BasePage {
         return waitElement(locator, Conditions.PRESENT);
     }
 
-
     protected List<WebElement> getElementsByXpath(String locator) {
         return waitElements(locator, Conditions.PRESENT);
     }
 
-    public static void scrollToElement() {
-
+    public static void scrollForElement(WebElement element, WebDriver driver) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
     protected WebElement waitUntilElementToBeClickableByXpath(String locator) {
         return wait.until(elementToBeClickable(By.xpath(locator)));
     }
