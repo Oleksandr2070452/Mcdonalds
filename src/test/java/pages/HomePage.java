@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 
-
 public class HomePage extends HomeElements {
 
     public HomePage(WebDriver driver) {
@@ -17,20 +16,33 @@ public class HomePage extends HomeElements {
 
     public static final String WORK_IN_MCDONALDS_BTN = "//div[@id='teaser-d543114359']//a";
     public static final String ARROW_IN_SLIDER_MOVE_NEXT = "//button[@aria-label='Next']";
-    public static final String LEARN_MORE_BTN = "//*[@id='teaser-4fd499e808']/div[2]/div[2]/a";
+    public static final String LEARN_MORE_BTN = "//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']";
     public static final String FACEBOOK_BTN = "//img[@alt='Facebook']";
     public static final String TIK_TOK_BTN = "//img[@alt='Tiktok']";
 
-    public WebElement getWorkInMcdonalds() {
-        return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
+    public WebElement getArrowInSliderMoveNext() {
+        waitElement("//*[@id='teaser-4fd499e808']//a", Conditions.VISIBILITY);
+        return driver.findElement(By.xpath(ARROW_IN_SLIDER_MOVE_NEXT));
     }
 
-    public WebElement getArrowInSliderMoveNext() {
-        return driver.findElement(By.xpath(ARROW_IN_SLIDER_MOVE_NEXT));
+    public HomePage clickMultiplyClickArrowMoveNext() {
+        for (int i = 0; i <= 1; i++) {
+            getArrowInSliderMoveNext().click();
+        }
+        return this;
     }
 
     public WebElement getLearnMore() {
         return driver.findElement(By.xpath(LEARN_MORE_BTN));
+    }
+
+    public HomePage clickLearnMoreForOpenOurDoors() {
+        jsClick(waitElement("//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']", Conditions.CLICKABLE), driver);
+
+        if (driver.getCurrentUrl().contains("item-fcc42de051")) {
+            getLearnMore().click();
+        }
+        return this;
     }
 
     public WebElement getFacebookBtn() {
@@ -49,6 +61,19 @@ public class HomePage extends HomeElements {
 
     public WebElement getTikTokBtn() {
         return driver.findElement(By.xpath(TIK_TOK_BTN));
+    }
+
+    public WebElement getWorkInMcdonalds() {
+        return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
+    }
+
+    public void clickInfluenceStrategy() {
+        getClickableElementByXpath(INFLUENCE_STRATEGY).click();
+    }
+
+    public HomePage clickDeliverFavorite() {
+        getClickableElementByXpath(DELIVER_FAVORITE_DETAILS).click();
+        return this;
     }
 
     public HomePage redirectionOnTikTokPage() {
@@ -77,20 +102,27 @@ public class HomePage extends HomeElements {
         getFindUs().click();
     }
 
-
     public HomePage clickOpenRestaurant() {
         getClickableElementByXpath(OPEN_RESTAURANT).click();
         return this;
     }
-
 
     public WebElement getMoreToysInHappyMeal() {
         return driver.findElement(By.xpath(MORE_HAPPY_MEAL));
     }
 
     public void clickMoreToysInHappyMeal() {
-       getMoreToysInHappyMeal().click();
+        getMoreToysInHappyMeal().click();
+    }
 
+    public WebElement getPauseBtn() {
+        return driver.findElement(By.xpath("//button[@data-cmp-hook-carousel='pause']"));
+    }
+
+    public HomePage clickPauseBtn() {
+        waitElement("//button[@data-cmp-hook-carousel='pause']", Conditions.VISIBILITY);
+        getPauseBtn().click();
+        return this;
     }
 
     public HomePage clickSearchBtn() {

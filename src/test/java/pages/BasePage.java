@@ -4,7 +4,6 @@ import conditions.Conditions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
 
@@ -88,6 +87,10 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
+    public static void jsClick(WebElement element, WebDriver driver) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", element);
+    }
     protected WebElement waitUntilElementToBeClickableByXpath(String locator) {
         return wait.until(elementToBeClickable(By.xpath(locator)));
     }
