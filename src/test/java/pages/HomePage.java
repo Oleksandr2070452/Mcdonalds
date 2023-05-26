@@ -1,5 +1,6 @@
 package pages;
 
+import conditions.Conditions;
 import elements.HomeElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public class HomePage extends HomeElements {
     public static final String ARROW_IN_SLIDER_MOVE_NEXT = "//button[@aria-label='Next']";
     public static final String LEARN_MORE_BTN = "//*[@id='teaser-4fd499e808']/div[2]/div[2]/a";
     public static final String FACEBOOK_BTN = "//img[@alt='Facebook']";
+    public static final String TIK_TOK_BTN = "//img[@alt='Tiktok']";
 
     public WebElement getWorkInMcdonalds() {
         return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
@@ -37,7 +39,22 @@ public class HomePage extends HomeElements {
 
     public HomePage redirectionOnFacebookPage() {
         scrollForElement(getFacebookBtn(), driver);
+        waitElement("//img[@alt='Facebook']", Conditions.VISIBILITY);
         getFacebookBtn().click();
+        ArrayList<String> switchToWindow = new ArrayList<>
+                (driver.getWindowHandles());
+        driver.switchTo().window(switchToWindow.get(1));
+        return this;
+    }
+
+    public WebElement getTikTokBtn() {
+        return driver.findElement(By.xpath(TIK_TOK_BTN));
+    }
+
+    public HomePage redirectionOnTikTokPage() {
+        scrollForElement(getTikTokBtn(), driver);
+        waitElement("//img[@alt='Tiktok']", Conditions.VISIBILITY);
+        getTikTokBtn().click();
         ArrayList<String> switchToWindow = new ArrayList<>
                 (driver.getWindowHandles());
         driver.switchTo().window(switchToWindow.get(1));
@@ -144,4 +161,5 @@ public class HomePage extends HomeElements {
         return this;
     }
 }
+
 
