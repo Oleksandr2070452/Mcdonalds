@@ -14,198 +14,201 @@ public class HomePage extends HomeElements {
         super(driver);
     }
 
-    public static final String WORK_IN_MCDONALDS_BTN = "//div[@id='teaser-d543114359']//a";
-    public static final String ARROW_IN_SLIDER_MOVE_NEXT = "//button[@aria-label='Next']";
-    public static final String LEARN_MORE_BTN = "//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']";
-    public static final String FACEBOOK_BTN = "//img[@alt='Facebook']";
-    public static final String TIK_TOK_BTN = "//img[@alt='Tiktok']";
-
-    public WebElement getArrowInSliderMoveNext() {
-        waitElement("//*[@id='teaser-4fd499e808']//a", Conditions.VISIBILITY);
-        return driver.findElement(By.xpath(ARROW_IN_SLIDER_MOVE_NEXT));
+    public WebElement getReadBookDetail() {
+        return driver.findElement(By.xpath(READ_BOOK_DETAIL));
     }
 
-    public HomePage clickMultiplyClickArrowMoveNext() {
-        for (int i = 0; i <= 1; i++) {
-            getArrowInSliderMoveNext().click();
+    public void clickReadBookDetail() {
+        getReadBookDetail().click();
+    }
+
+        public HomePage clickMultiplyClickArrowMoveNext () {
+            for (int i = 0; i <= 1; i++) {
+                getArrowInSliderMoveNext().click();
+            }
+            return this;
         }
-        return this;
-    }
 
-    public WebElement getLearnMore() {
-        return driver.findElement(By.xpath(LEARN_MORE_BTN));
-    }
+        public HomePage clickLearnMoreForOpenOurDoors () {
+            jsClick(waitElement("//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']", Conditions.CLICKABLE), driver);
 
-    public HomePage clickLearnMoreForOpenOurDoors() {
-        jsClick(waitElement("//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']", Conditions.CLICKABLE), driver);
-
-        if (driver.getCurrentUrl().contains("item-fcc42de051")) {
-            getLearnMore().click();
+            if (driver.getCurrentUrl().contains("item-fcc42de051")) {
+                getLearnMore().click();
+            }
+            return this;
         }
-        return this;
-    }
 
-    public WebElement getFacebookBtn() {
-        return driver.findElement(By.xpath(FACEBOOK_BTN));
-    }
+        public WebElement getWorkInMcdonalds () {
+            return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
+        }
 
-    public HomePage redirectionOnFacebookPage() {
-        scrollForElement(getFacebookBtn(), driver);
-        waitElement("//img[@alt='Facebook']", Conditions.VISIBILITY);
-        getFacebookBtn().click();
-        ArrayList<String> switchToWindow = new ArrayList<>
-                (driver.getWindowHandles());
-        driver.switchTo().window(switchToWindow.get(1));
-        return this;
-    }
+        public void clickInfluenceStrategy () {
+            getClickableElementByXpath(INFLUENCE_STRATEGY).click();
+        }
 
-    public WebElement getTikTokBtn() {
-        return driver.findElement(By.xpath(TIK_TOK_BTN));
-    }
+        public HomePage clickDeliverFavorite () {
+            getClickableElementByXpath(DELIVER_FAVORITE_DETAILS).click();
+            return this;
+        }
 
-    public WebElement getWorkInMcdonalds() {
-        return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
-    }
+        public WebElement getArrowInSliderMoveNext () {
+            return driver.findElement(By.xpath(ARROW_IN_SLIDER_MOVE_NEXT));
+        }
 
-    public void clickInfluenceStrategy() {
-        getClickableElementByXpath(INFLUENCE_STRATEGY).click();
-    }
+        public WebElement getLearnMore () {
+            return driver.findElement(By.xpath(LEARN_MORE_BTN));
+        }
 
-    public HomePage clickDeliverFavorite() {
-        getClickableElementByXpath(DELIVER_FAVORITE_DETAILS).click();
-        return this;
-    }
+        public WebElement getFacebookBtn () {
+            return driver.findElement(By.xpath(FACEBOOK_BTN));
+        }
 
-    public HomePage redirectionOnTikTokPage() {
-        scrollForElement(getTikTokBtn(), driver);
-        waitElement("//img[@alt='Tiktok']", Conditions.VISIBILITY);
-        getTikTokBtn().click();
-        ArrayList<String> switchToWindow = new ArrayList<>
-                (driver.getWindowHandles());
-        driver.switchTo().window(switchToWindow.get(1));
-        return this;
-    }
+        public HomePage redirectionOnFacebookPage () {
+            scrollForElement(getFacebookBtn(), driver);
+            waitElement("//img[@alt='Facebook']", Conditions.VISIBILITY);
+            getFacebookBtn().click();
+            ArrayList<String> switchToWindow = new ArrayList<>
+                    (driver.getWindowHandles());
+            driver.switchTo().window(switchToWindow.get(1));
+            return this;
+        }
 
-    public WebElement getMcDelivery() {
-        return driver.findElement(By.xpath("//div[@class='cmp-global-header__primary-nav']//a[@href='/ua/uk-ua/mcdelivery.html']"));
-    }
+        public WebElement getTikTokBtn () {
+            return driver.findElement(By.xpath(TIK_TOK_BTN));
+        }
 
-    public void clickMcDelivery() {
-        getMcDelivery().click();
-    }
 
-    public WebElement getFindUs() {
-        return driver.findElement(By.xpath("(//span[@class='icon icon-location'])[2]"));
-    }
+        public HomePage redirectionOnTikTokPage () {
+            scrollForElement(getTikTokBtn(), driver);
+            waitElement("//img[@alt='Tiktok']", Conditions.VISIBILITY);
+            getTikTokBtn().click();
+            ArrayList<String> switchToWindow = new ArrayList<>
+                    (driver.getWindowHandles());
+            driver.switchTo().window(switchToWindow.get(1));
+            return this;
+        }
 
-    public void clickFindUs() {
-        getFindUs().click();
-    }
+        public WebElement getMcDelivery () {
+            return driver.findElement(By.xpath("//div[@class='cmp-global-header__primary-nav']//a[@href='/ua/uk-ua/mcdelivery.html']"));
+        }
 
-    public HomePage clickOpenRestaurant() {
-        getClickableElementByXpath(OPEN_RESTAURANT).click();
-        return this;
-    }
+        public void clickMcDelivery () {
+            getMcDelivery().click();
+        }
 
-    public WebElement getMoreToysInHappyMeal() {
-        return driver.findElement(By.xpath(MORE_HAPPY_MEAL));
-    }
+        public WebElement getFindUs () {
+            return driver.findElement(By.xpath("(//span[@class='icon icon-location'])[2]"));
+        }
 
-    public void clickMoreToysInHappyMeal() {
-        getMoreToysInHappyMeal().click();
-    }
+        public void clickFindUs () {
+            getFindUs().click();
+        }
 
-    public WebElement getPauseBtn() {
-        return driver.findElement(By.xpath("//button[@data-cmp-hook-carousel='pause']"));
-    }
+        public HomePage clickOpenRestaurant () {
+            getClickableElementByXpath(OPEN_RESTAURANT).click();
+            return this;
+        }
 
-    public HomePage clickPauseBtn() {
-        waitElement("//button[@data-cmp-hook-carousel='pause']", Conditions.VISIBILITY);
-        getPauseBtn().click();
-        return this;
-    }
+        public WebElement getMoreToysInHappyMeal () {
+            return driver.findElement(By.xpath(MORE_HAPPY_MEAL));
+        }
 
-    public HomePage clickSearchBtn() {
-        getClickableElementByXpath(SEARCH_BTN).click();
-        return this;
-    }
+        public void clickMoreToysInHappyMeal () {
+            getMoreToysInHappyMeal().click();
+        }
 
-    public HomePage clickSalaryCalculatorBtn() {
-        getClickableElementByXpath(SALARY_CALCULATOR_BTN).click();
-        return this;
-    }
+        public WebElement getPauseBtn () {
+            return driver.findElement(By.xpath("//button[@data-cmp-hook-carousel='pause']"));
+        }
 
-    public HomePage clickMenuBtn() {
-        getClickableElementByXpath(MENU_BTN).click();
-        return this;
-    }
+        public HomePage clickPauseBtn () {
+            waitElement("//button[@data-cmp-hook-carousel='pause']", Conditions.VISIBILITY);
+            getPauseBtn().click();
+            return this;
+        }
 
-    public HomePage clickFullMenuBtn() {
-        getClickableElementByXpath(FULL_MENU_BTN).click();
-        return this;
-    }
 
-    public HomePage foundationRonaldaBtn() {
-        getClickableElementByXpath(FOUNDATION_RONALDA_BTN).click();
-        return this;
-    }
+        public HomePage clickSearchBtn () {
+            getClickableElementByXpath(SEARCH_BTN).click();
+            return this;
+        }
 
-    public String getTextFoundationRonaldaTitle() {
-        return getVisibilityElementByXpath(FOUNDATION_RONALDA_TITTLE).getText();
-    }
+        public HomePage clickSalaryCalculatorBtn () {
+            getClickableElementByXpath(SALARY_CALCULATOR_BTN).click();
+            return this;
+        }
 
-    public String getLinkFromVisitSiteBtn() {
-        return getVisibilityElementByXpath(VISIT_SITE_BTN).getAttribute("href");
-    }
+        public HomePage clickMenuBtn () {
+            getClickableElementByXpath(MENU_BTN).click();
+            return this;
+        }
 
-    public HomePage clickWorkPlaceBtn() {
-        getClickableElementByXpath(WORK_PLACE_BTN).click();
-        return this;
-    }
+        public HomePage clickFullMenuBtn () {
+            getClickableElementByXpath(FULL_MENU_BTN).click();
+            return this;
+        }
 
-    public String getTextWorkPlaceTitle() {
-        return getVisibilityElementByXpath(WORK_PLACE_TITTLE).getText();
-    }
+        public HomePage foundationRonaldaBtn () {
+            getClickableElementByXpath(FOUNDATION_RONALDA_BTN).click();
+            return this;
+        }
 
-    public HomePage clickQuestionAndAnswerBtn() {
-        getClickableElementByXpath(QUESTION_AND_ANSWER_BTN).click();
-        return this;
-    }
+        public String getTextFoundationRonaldaTitle () {
+            return getVisibilityElementByXpath(FOUNDATION_RONALDA_TITTLE).getText();
+        }
 
-    public HomePage selectTitle(String title) {
-        getClickableElementByXpath(title).click();
-        return this;
-    }
+        public String getLinkFromVisitSiteBtn () {
+            return getVisibilityElementByXpath(VISIT_SITE_BTN).getAttribute("href");
+        }
 
-    public String getLinkFromEmploymentBtn() {
-        return getVisibilityElementByXpath(EMPLOYMENT_BTN).getAttribute("class");
-    }
+        public HomePage clickWorkPlaceBtn () {
+            getClickableElementByXpath(WORK_PLACE_BTN).click();
+            return this;
+        }
 
-    public String getLinkFromGeneralQuestionsBtn() {
-        return getVisibilityElementByXpath(GENERAL_QUESTION_BTN).getAttribute("class");
-    }
+        public String getTextWorkPlaceTitle () {
+            return getVisibilityElementByXpath(WORK_PLACE_TITTLE).getText();
+        }
 
-    public String getLinkFromJobFeaturesBtn() {
-        return getVisibilityElementByXpath(JOB_FEATURES_BTN).getAttribute("class");
-    }
+        public HomePage clickQuestionAndAnswerBtn () {
+            getClickableElementByXpath(QUESTION_AND_ANSWER_BTN).click();
+            return this;
+        }
 
-    public HomePage clickAppStoreBtn() {
-        getClickableElementByXpath(APP_STORE_BTN).click();
-        return this;
-    }
+        public HomePage selectTitle (String title){
+            getClickableElementByXpath(title).click();
+            return this;
+        }
 
-    public HomePage clickInstagramBtn() {
-        getClickableElementByXpath(INSTAGRAM_BTN).click();
-        return this;
-    }
+        public String getLinkFromEmploymentBtn () {
+            return getVisibilityElementByXpath(EMPLOYMENT_BTN).getAttribute("class");
+        }
 
-    public HomePage clickGooglePlayBtn() {
-        getClickableElementByXpath(GOOGLE_PLAY_BTN).click();
-        return this;
-    }
-    public HomePage clickTwitterBtn() {
-        getClickableElementByXpath(TWITTER_BTN).click();
-        return this;
-    }
-}
+        public String getLinkFromGeneralQuestionsBtn () {
+            return getVisibilityElementByXpath(GENERAL_QUESTION_BTN).getAttribute("class");
+        }
 
+        public String getLinkFromJobFeaturesBtn () {
+            return getVisibilityElementByXpath(JOB_FEATURES_BTN).getAttribute("class");
+        }
+
+        public HomePage clickAppStoreBtn () {
+            getClickableElementByXpath(APP_STORE_BTN).click();
+            return this;
+        }
+
+        public HomePage clickInstagramBtn () {
+            getClickableElementByXpath(INSTAGRAM_BTN).click();
+            return this;
+        }
+
+        public HomePage clickGooglePlayBtn () {
+            getClickableElementByXpath(GOOGLE_PLAY_BTN).click();
+            return this;
+        }
+
+        public HomePage clickTwitterBtn () {
+            getClickableElementByXpath(TWITTER_BTN).click();
+            return this;
+        }
+    }
