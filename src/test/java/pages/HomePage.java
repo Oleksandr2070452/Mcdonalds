@@ -14,15 +14,12 @@ public class HomePage extends HomeElements {
         super(driver);
     }
 
-    public static final String WORK_IN_MCDONALDS_BTN = "//div[@id='teaser-d543114359']//a";
-    public static final String ARROW_IN_SLIDER_MOVE_NEXT = "//button[@aria-label='Next']";
-    public static final String LEARN_MORE_BTN = "//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']";
-    public static final String FACEBOOK_BTN = "//img[@alt='Facebook']";
-    public static final String TIK_TOK_BTN = "//img[@alt='Tiktok']";
+    public WebElement getReadBookDetail() {
+        return driver.findElement(By.xpath(READ_BOOK_DETAIL));
+    }
 
-    public WebElement getArrowInSliderMoveNext() {
-        waitElement("//*[@id='teaser-4fd499e808']//a", Conditions.VISIBILITY);
-        return driver.findElement(By.xpath(ARROW_IN_SLIDER_MOVE_NEXT));
+    public void clickReadBookDetail() {
+        getReadBookDetail().click();
     }
 
     public HomePage clickMultiplyClickArrowMoveNext() {
@@ -32,10 +29,6 @@ public class HomePage extends HomeElements {
         return this;
     }
 
-    public WebElement getLearnMore() {
-        return driver.findElement(By.xpath(LEARN_MORE_BTN));
-    }
-
     public HomePage clickLearnMoreForOpenOurDoors() {
         jsClick(waitElement("//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']", Conditions.CLICKABLE), driver);
 
@@ -43,6 +36,27 @@ public class HomePage extends HomeElements {
             getLearnMore().click();
         }
         return this;
+    }
+
+    public WebElement getWorkInMcdonalds() {
+        return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
+    }
+
+    public void clickInfluenceStrategy() {
+        getClickableElementByXpath(INFLUENCE_STRATEGY).click();
+    }
+
+    public HomePage clickDeliverFavorite() {
+        getClickableElementByXpath(DELIVER_FAVORITE_DETAILS).click();
+        return this;
+    }
+
+    public WebElement getArrowInSliderMoveNext() {
+        return driver.findElement(By.xpath(ARROW_IN_SLIDER_MOVE_NEXT));
+    }
+
+    public WebElement getLearnMore() {
+        return driver.findElement(By.xpath(LEARN_MORE_BTN));
     }
 
     public WebElement getFacebookBtn() {
@@ -63,18 +77,6 @@ public class HomePage extends HomeElements {
         return driver.findElement(By.xpath(TIK_TOK_BTN));
     }
 
-    public WebElement getWorkInMcdonalds() {
-        return driver.findElement(By.xpath(WORK_IN_MCDONALDS_BTN));
-    }
-
-    public void clickInfluenceStrategy() {
-        getClickableElementByXpath(INFLUENCE_STRATEGY).click();
-    }
-
-    public HomePage clickDeliverFavorite() {
-        getClickableElementByXpath(DELIVER_FAVORITE_DETAILS).click();
-        return this;
-    }
 
     public HomePage redirectionOnTikTokPage() {
         scrollForElement(getTikTokBtn(), driver);
@@ -124,6 +126,7 @@ public class HomePage extends HomeElements {
         getPauseBtn().click();
         return this;
     }
+
 
     public HomePage clickSearchBtn() {
         getClickableElementByXpath(SEARCH_BTN).click();
@@ -181,6 +184,16 @@ public class HomePage extends HomeElements {
         return getVisibilityElementByXpath(EMPLOYMENT_BTN).getAttribute("class");
     }
 
+    public HomePage clickGooglePlayBtn() {
+        getClickableElementByXpath(GOOGLE_PLAY_BTN).click();
+        return this;
+    }
+
+    public HomePage clickTwitterBtn() {
+        getClickableElementByXpath(TWITTER_BTN).click();
+        return this;
+    }
+
     public String getLinkFromGeneralQuestionsBtn() {
         return getVisibilityElementByXpath(GENERAL_QUESTION_BTN).getAttribute("class");
     }
@@ -196,16 +209,6 @@ public class HomePage extends HomeElements {
 
     public HomePage clickInstagramBtn() {
         getClickableElementByXpath(INSTAGRAM_BTN).click();
-        return this;
-    }
-
-    public HomePage clickGooglePlayBtn() {
-        getClickableElementByXpath(GOOGLE_PLAY_BTN).click();
-        return this;
-    }
-
-    public HomePage clickTwitterBtn() {
-        getClickableElementByXpath(TWITTER_BTN).click();
         return this;
     }
 }
