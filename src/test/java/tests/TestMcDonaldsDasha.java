@@ -71,7 +71,7 @@ public class TestMcDonaldsDasha extends TestInit {
         assertTrue(homePage.getLinkFromGeneralQuestionsBtn().contains("active"));
 
         homePage
-                .selectTitle(GENERAL_QUESTION_BTN);
+                .selectTitle(JOB_FEATURES_BTN);
 
         assertTrue(homePage.getLinkFromJobFeaturesBtn().contains("active"));
     }
