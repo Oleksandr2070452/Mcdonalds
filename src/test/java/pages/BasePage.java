@@ -9,17 +9,15 @@ import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
-
 public class BasePage {
-    public WebDriver driver;
 
+    public WebDriver driver;
     public JavascriptExecutor javascriptExecutor;
     protected WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofMillis(5000));
-
     }
 
     protected WebElement waitElement(String locator, Conditions conditions) {

@@ -1,16 +1,14 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 
 import static elements.HomeElements.*;
-import static java.lang.Thread.sleep;
 import static utills.CommonAction.scrollDown;
 
 public class TestMcDonaldsDasha extends TestInit {
+
     @Test(description = "SPAC-31")
     public void checkSearchFieldTest() {
         SearchPage searchPage = new SearchPage(driver);
@@ -28,7 +26,7 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-32")
-    public void btnWorkPlaceTest() throws InterruptedException {
+    public void btnWorkPlaceTest() {
         HomePage homePage = new HomePage(driver);
 
         homePage
@@ -110,7 +108,7 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-40(37)")
-    public void instagramButtonTest() throws InterruptedException {
+    public void instagramButtonTest() {
         HomePage homePage = new HomePage(driver);
         InstagramPage instagramPage = new InstagramPage(driver);
 
@@ -125,7 +123,7 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-41(38)")
-    public void twitterButtonTest() throws InterruptedException {
+    public void twitterButtonTest() {
         HomePage homePage = new HomePage(driver);
         TwitterPage twitterPage = new TwitterPage(driver);
 
@@ -140,7 +138,7 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-42(39)")
-    public void fullMenuBtnTest() throws InterruptedException {
+    public void fullMenuBtnTest() {
 
         new HomePage(driver)
                 .clickMenuBtn()
@@ -150,7 +148,7 @@ public class TestMcDonaldsDasha extends TestInit {
     }
 
     @Test(description = "SPAC-43")
-    public void foundationRonaldaBtnTest() throws InterruptedException {
+    public void foundationRonaldaBtnTest() {
         HomePage homePage = new HomePage(driver);
 
         homePage
