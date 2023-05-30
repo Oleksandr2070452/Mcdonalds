@@ -30,6 +30,16 @@ public class HomePage extends HomeElements {
         return this;
     }
 
+    public WebElement getArrowInSliderMovePrevious() {
+        return driver.findElement(By.xpath("//button[@class='cmp-carousel__action cmp-carousel__action--previous']"));
+
+    }
+
+    public HomePage clickArrowMovePrevious() {
+        getArrowInSliderMovePrevious().click();
+        return this;
+    }
+
     public HomePage clickLearnMoreForOpenOurDoors() {
         jsClick(waitElement("//div/a[@href='https://ukraine.mcdonalds.ua/ukr/mcmode/']", Conditions.CLICKABLE), driver);
 
@@ -212,12 +222,23 @@ public class HomePage extends HomeElements {
         getClickableElementByXpath(INSTAGRAM_BTN).click();
         return this;
     }
+
     public WebElement getFeedBackBtn() {
         return driver.findElement(By.xpath("//li[1]/div[2]/div/ul/li[2]/a/span"));
     }
 
     public HomePage clickFeedBackBtn() {
         getFeedBackBtn().click();
+        return this;
+    }
+
+    public WebElement getLearnMoreBtnForHelpForFamilyTogatherPage() {
+        return driver.findElement(By.xpath("//a[@href='https://rmhc.org.ua/?lang=uk']"));
+    }
+
+    public HomePage clickLearnMoreBtnForHelpForFamilyTogatherPage() {
+        waitElement("//a[@href='https://rmhc.org.ua/?lang=uk']", Conditions.VISIBILITY);
+        getLearnMoreBtnForHelpForFamilyTogatherPage().click();
         return this;
     }
 }
