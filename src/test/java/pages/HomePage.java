@@ -251,4 +251,13 @@ public class HomePage extends HomeElements {
         getLearnMoreForCherrryNoveltyPage().click();
         return this;
     }
+
+    public WebElement getLearnMoreForYourUpdatedBurgers() {
+        return driver.findElement(By.xpath("//a[@href='/ua/uk-ua/eat/special_offers/best_burgers.html']"));
+    }
+
+    public HomePage clickLearnMoreForYourUpdatedBurgers() {
+        getLearnMoreForYourUpdatedBurgers().click();
+        return this;
+    }
 }
