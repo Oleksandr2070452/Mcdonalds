@@ -241,4 +241,14 @@ public class HomePage extends HomeElements {
         getLearnMoreBtnForHelpForFamilyTogatherPage().click();
         return this;
     }
+
+    public WebElement getLearnMoreForCherrryNoveltyPage() {
+        return driver.findElement(By.xpath("//a[@href='/ua/uk-ua/eat/novelty/fresh-cherry.html']"));
+    }
+
+    public HomePage clickLearnMoreForCherrryNoveltyPage() {
+        waitElement("//a[@href='/ua/uk-ua/eat/novelty/fresh-cherry.html']", Conditions.VISIBILITY);
+        getLearnMoreForCherrryNoveltyPage().click();
+        return this;
+    }
 }
