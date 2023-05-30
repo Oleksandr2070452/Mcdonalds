@@ -3,3 +3,4 @@
 .allure
 target/allure-results/allure-results
 allure-results
+.DS_Store
