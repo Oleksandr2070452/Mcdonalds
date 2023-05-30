@@ -203,8 +203,18 @@ public class HomePage extends HomeElements {
         getClickableElementByXpath(GOOGLE_PLAY_BTN).click();
         return this;
     }
+
     public HomePage clickTwitterBtn() {
         getClickableElementByXpath(TWITTER_BTN).click();
+        return this;
+    }
+
+    public WebElement getFeedBackBtn() {
+        return driver.findElement(By.xpath("//li[1]/div[2]/div/ul/li[2]/a/span"));
+    }
+
+    public HomePage clickFeedBackBtn() {
+        getFeedBackBtn().click();
         return this;
     }
 }
