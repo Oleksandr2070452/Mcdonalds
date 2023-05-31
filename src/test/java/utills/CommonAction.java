@@ -19,5 +19,4 @@ public class CommonAction {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,2000)");
     }
-
 }
