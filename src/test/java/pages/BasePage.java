@@ -5,13 +5,14 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class BasePage {
 
-    public WebDriver driver;
+    public static WebDriver driver;
     public JavascriptExecutor javascriptExecutor;
     protected WebDriverWait wait;
 
@@ -93,5 +94,10 @@ public class BasePage {
     }
     protected WebElement waitUntilElementToBeClickableByXpath(String locator) {
         return wait.until(elementToBeClickable(By.xpath(locator)));
+    }
+    public static void movEToNextWindow(){
+        ArrayList<String> switchToWindow = new ArrayList<>
+                (driver.getWindowHandles());
+        driver.switchTo().window(switchToWindow.get(1));
     }
 }

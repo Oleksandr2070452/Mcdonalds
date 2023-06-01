@@ -233,12 +233,13 @@ public class HomePage extends HomeElements {
     }
 
     public WebElement getLearnMoreBtnForHelpForFamilyTogatherPage() {
-        return driver.findElement(By.xpath("//a[@href='https://rmhc.org.ua/?lang=uk']"));
+        return driver.findElement(By.xpath("//a[@href='https://rmhc.org.ua/donate/?dest=rooms']"));
     }
 
     public HomePage clickLearnMoreBtnForHelpForFamilyTogatherPage() {
-        waitElement("//a[@href='https://rmhc.org.ua/?lang=uk']", Conditions.VISIBILITY);
+        waitElement("//a[@href='https://rmhc.org.ua/donate/?dest=rooms']", Conditions.VISIBILITY);
         getLearnMoreBtnForHelpForFamilyTogatherPage().click();
+        movEToNextWindow();
         return this;
     }
 
