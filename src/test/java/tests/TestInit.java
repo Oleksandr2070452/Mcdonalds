@@ -25,7 +25,7 @@ public class TestInit extends Assert {
 
     @AfterMethod
     public void closeTest() {
-        driver.quit();
+//        driver.quit();
     }
 
     public void switchToTab(WebDriver drv, Integer num) {
