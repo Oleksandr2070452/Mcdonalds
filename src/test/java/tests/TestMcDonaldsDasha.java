@@ -1,171 +1,161 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.*;
 
-import java.util.List;
-
-import static java.lang.Thread.sleep;
+import static elements.HomeElements.*;
 import static utills.CommonAction.scrollDown;
 
 public class TestMcDonaldsDasha extends TestInit {
 
-    private static final String INSTAGRAM_LABEL = "Instagram";
-
-
     @Test(description = "SPAC-31")
-    public void checkSearchFieldTest() throws InterruptedException {
-        driver.findElement(By.xpath("//span[@class='item-text']")).click();
-        driver.findElement(By.xpath("//input[@id='form-text-1673594539']")).sendKeys("BigMac");
-        driver.findElement(By.xpath("//button[@id='button-93a5672f17']")).click();
-        sleep(500);
-        List<WebElement> searchResults = driver.findElements(By.xpath
-                ("//h3[@class='cmp-site-search__result-container--heading']/a"));
+    public void checkSearchFieldTest() {
+        SearchPage searchPage = new SearchPage(driver);
 
-        for (WebElement el : searchResults) {
+        new HomePage(driver)
+                .clickSearchBtn();
+
+        searchPage
+                .setSearchData("BigMac")
+                .clickSearchBtn();
+
+        for (WebElement el : searchPage.getListResult()) {
             assertTrue(el.getText().toLowerCase().contains("біг мак"));
         }
     }
 
     @Test(description = "SPAC-32")
-    public void btnWorkPlaceTest() throws InterruptedException {
-        WebElement workPlaceBtn = driver.findElement(By.xpath("//span[contains(text(),'Робочі місця')]"));
-        workPlaceBtn.click();
-        WebElement workPlaceTitle = driver.findElement(By.xpath("//h1[contains(text(),'Робочі місця')]"));
+    public void btnWorkPlaceTest() {
+        HomePage homePage = new HomePage(driver);
 
-        assertTrue(driver.getCurrentUrl().contains("/working_places.html"));
-        assertTrue(workPlaceTitle.isDisplayed());
+        homePage
+                .clickWorkPlaceBtn();
+
+        assertTrue(getUrl().contains("/working_places.html"));
+        assertEquals(homePage.getTextWorkPlaceTitle(), "Робочі місця, рівність та розширення можливостей");
     }
 
     @Test(description = "SPAC-33")
     public void mcDonaldsSalaryCalculatorTest() {
-        WebElement salaryCalculatorButton = driver.findElement(By.xpath(
-                "//span[contains(text(),'Зарплатний калькулятор')]"));
-        salaryCalculatorButton.click();
+        CareerPage careerPage = new CareerPage(driver);
 
-        WebElement dropDownBtn = driver.findElement(By.xpath(
-                "//label[@for='calc-city']/following-sibling::div//b"));
-        dropDownBtn.click();
-        WebElement citySelect = driver.findElement(By.xpath("//li[@data-index='24']"));
-        citySelect.click();
+        new HomePage(driver)
+                .clickSalaryCalculatorBtn();
 
-        WebElement dropDownBut = driver.findElement(By.xpath("//select[@id='daynight']/../.."));
-        dropDownBut.click();
-        WebElement employmentSelect = driver.findElement(By.xpath(
-                "//label[@for='daynight']/following-sibling::div//li"));
-        employmentSelect.click();
+        careerPage
+                .selectCity()
+                .selectSchedule()
+                .selectTime()
+                .calculateSalary();
 
-        WebElement canWork = driver.findElement(By.xpath(
-                "//label[@for='select_time']/following-sibling::div//span"));
-        canWork.click();
-        WebElement timeWork = driver.findElement(By.xpath(
-                "//label[@for='select_time']/following-sibling::div//li[2]"));
-        timeWork.click();
-
-        WebElement calculateButton = driver.findElement(By.xpath("//a[@id='js-calculator-form-btn']"));
-        calculateButton.click();
-
-        WebElement totalPriceElement = driver.findElement(By.xpath("(//h3[@class='js-total-price'])"));
-        String totalPriceText = totalPriceElement.getText().replace(" грн.", "");
-        double totalPrice = Double.parseDouble(totalPriceText);
-
-        assertTrue(totalPrice > 0, "Total price is not greater than 0.");
+        assertTrue(careerPage.getPredictedSalary() > 0);
+        assertTrue(careerPage.getLearnMoreBtn().isDisplayed());
+        assertTrue(careerPage.getWantWorkBtn().isDisplayed());
     }
 
     @Test(description = "SPAC-34")
-    public void qnaTest() {
+    public void questionAndAnswerTest() {
+        HomePage homePage = new HomePage(driver);
 
-        WebElement qnaBtn = driver.findElement(By.xpath(
-                "//div[@class='cmp-footer__nav-links']//" +
-                        "li[contains(@data-cmp-data-layer, 'zapitannja-ta-vidpovidi/')]"));
-        qnaBtn.click();
+        homePage
+                .clickQuestionAndAnswerBtn()
+                .selectTitle(EMPLOYMENT_BTN);
 
-        assertTrue(driver.getCurrentUrl().contains("/zapitannja-ta-vidpovidi/"));
+        assertTrue(getUrl().contains("/zapitannja-ta-vidpovidi/"));
+        assertTrue(homePage.getLinkFromEmploymentBtn().contains("active"));
 
-        WebElement employmentButton = driver.findElement(By.xpath(
-                "//div[@class='faq_tab_choose-list']/div[@data-tab='1']"));
-        employmentButton.click();
+        homePage
+                .selectTitle(GENERAL_QUESTION_BTN);
 
-        assertTrue(employmentButton.getAttribute("class").contains("active"));
+        assertTrue(homePage.getLinkFromGeneralQuestionsBtn().contains("active"));
 
-        WebElement generalQuestionsButton = driver.findElement(By.xpath(
-                "//div[@class='faq_tab_choose-list']/div[@data-tab='2']"));
-        generalQuestionsButton.click();
+        homePage
+                .selectTitle(JOB_FEATURES_BTN);
 
-        assertTrue(generalQuestionsButton.getAttribute("class").contains("active"));
-
-        WebElement jobFeaturesButton = driver.findElement(By.xpath(
-                "//div[@class='faq_tab_choose-list']/div[@data-tab='3']"));
-        jobFeaturesButton.click();
-
-        assertTrue(jobFeaturesButton.getAttribute("class").contains("active"));
+        assertTrue(homePage.getLinkFromJobFeaturesBtn().contains("active"));
     }
 
     @Test(description = "SPAC-35")
     public void googlePlayButtonTest() {
+        HomePage homePage = new HomePage(driver);
+        GooglePlayPage googlePlayPage = new GooglePlayPage(driver);
+
         scrollDown(driver);
-        WebElement googlePlayButton = driver.findElement(By.xpath(
-                "//div[@class='cmp-footer__apps']/div[2]"));
-        googlePlayButton.click();
+
+        homePage
+                .clickGooglePlayBtn();
+
         switchToTab(driver, 1);
 
-        assertTrue(driver.getCurrentUrl().contains("mcdonalds.mobileapp"));
+        assertTrue(getUrl().contains("mcdonalds.mobileapp"));
+        assertTrue(googlePlayPage.getGooglePlayTitle().contains("McDonald's"));
     }
 
-    @Test(description = "SPAC-36")
+    @Test(description = "SPAC-39(36)")
     public void appStoreButtonTest() {
+        HomePage homePage = new HomePage(driver);
+        AppStorePage appStorePage = new AppStorePage(driver);
+
         scrollDown(driver);
-        WebElement appStoreButton = driver.findElement(By.xpath(
-                "//div[@class='cmp-footer__apps']/div[1]"));
-        appStoreButton.click();
+        homePage
+                .clickAppStoreBtn();
+
         switchToTab(driver, 1);
 
-        assertTrue(driver.getCurrentUrl().contains("app/mcdonalds"));
-
-        WebElement appHeader = driver.findElement(By.xpath(
-                "//h1"));
-
-        assertTrue(appHeader.getText().contains("McDonald's"));
+        assertTrue(getUrl().contains("app/mcdonalds"));
+        assertTrue(appStorePage.getAppHeaderTitle().contains("McDonald's"));
     }
 
-    @Test(description = "SPAC-37")
-    public void instagramButtonTest() throws InterruptedException {
+    @Test(description = "SPAC-40(37)")
+    public void instagramButtonTest() {
+        HomePage homePage = new HomePage(driver);
+        InstagramPage instagramPage = new InstagramPage(driver);
+
         scrollDown(driver);
-        sleep(500);
-        WebElement instagramButton = driver.findElement(By.xpath(
-                "//div[@data-title='Instagram']/a"));
-        instagramButton.click();
+        homePage
+                .clickInstagramBtn();
+
         switchToTab(driver, 1);
-        sleep(1000);
 
-        assertTrue(driver.getCurrentUrl().contains("instagram.com/mcdonaldsukraine/"));
-
-        sleep(1000);
-        WebElement instagramHeader = driver.findElement(By.xpath(
-                "//div[@class='_aagx']/*[name()='svg']"));
-
-        String actualText = instagramHeader.getAttribute("aria-label");
-
-        assertEquals(INSTAGRAM_LABEL, actualText);
+        assertTrue(getUrl().contains("instagram.com/mcdonaldsukraine/"));
+        assertEquals(instagramPage.getLinkFromInstagramBtn(), "Instagram");
     }
 
-    @Test(description = "SPAC-38")
-    public void twitterButtonTest() throws InterruptedException {
+    @Test(description = "SPAC-41(38)")
+    public void twitterButtonTest() {
+        HomePage homePage = new HomePage(driver);
+        TwitterPage twitterPage = new TwitterPage(driver);
+
         scrollDown(driver);
-        sleep(500);
-        WebElement twitterButton = driver.findElement(By.xpath(
-                "//div[@data-title='Twitter']"));
-        twitterButton.click();
+        homePage
+                .clickTwitterBtn();
+
         switchToTab(driver, 1);
-        sleep(1000);
 
-        Assert.assertTrue(driver.getCurrentUrl().contains("/twitter.com/McDonaldsUA"));
+        assertTrue(getUrl().contains("/twitter.com/McDonaldsUA"));
+        assertTrue(twitterPage.getTwitterTitle().contains("McDonald's"));
+    }
 
-        sleep(1000);
-        WebElement twitterTittle = driver.findElement(By.xpath("//h2[@dir='ltr']"));
+    @Test(description = "SPAC-42(39)")
+    public void fullMenuBtnTest() {
 
-        Assert.assertTrue(twitterTittle.getText().contains("McDonald's"));
+        new HomePage(driver)
+                .clickMenuBtn()
+                .clickFullMenuBtn();
+
+        assertTrue(new MenuPage(driver).getNumberOfMenuItems().size() > 30);
+    }
+
+    @Test(description = "SPAC-43")
+    public void foundationRonaldaBtnTest() {
+        HomePage homePage = new HomePage(driver);
+
+        homePage
+                .foundationRonaldaBtn();
+
+        assertTrue(getUrl().contains("/impact_strategy/"));
+        assertEquals(homePage.getTextFoundationRonaldaTitle(), "Фундація Дім Рональда МакДональда");
+        assertEquals(homePage.getLinkFromVisitSiteBtn(), "http://rmhc.org.ua/");
     }
 }

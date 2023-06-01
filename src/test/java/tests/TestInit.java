@@ -25,12 +25,16 @@ public class TestInit extends Assert {
 
     @AfterMethod
     public void closeTest() {
-        driver.quit();
+//        driver.quit();
     }
 
     public void switchToTab(WebDriver drv, Integer num) {
         ArrayList<String> tab = new ArrayList<>
                 (drv.getWindowHandles());
         drv.switchTo().window(tab.get(num));
+    }
+
+    public String getUrl() {
+        return driver.getCurrentUrl();
     }
 }
