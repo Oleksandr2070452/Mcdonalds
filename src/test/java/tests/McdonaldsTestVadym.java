@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class McdonaldsTestVadym extends TestInit {
+
     @Test
     public void checkRestaurantInLutskTest() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
