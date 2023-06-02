@@ -241,8 +241,7 @@ public class HomePage extends HomeElements {
     public HomePage clickLearnMoreBtnForHelpForFamilyTogatherPage() {
         waitElement("//a[@href='https://rmhc.org.ua/donate/?dest=rooms']", Conditions.VISIBILITY);
         getLearnMoreBtnForHelpForFamilyTogatherPage().click();
-        moveToNextWindow();
-
+        movEToNextWindow();
         return this;
     }
 
@@ -253,6 +252,15 @@ public class HomePage extends HomeElements {
     public HomePage clickLearnMoreForCherrryNoveltyPage() {
         waitElement("//a[@href='/ua/uk-ua/eat/novelty/fresh-cherry.html']", Conditions.VISIBILITY);
         getLearnMoreForCherrryNoveltyPage().click();
+        return this;
+    }
+
+    public WebElement getLearnMoreForYourUpdatedBurgers() {
+        return driver.findElement(By.xpath("//a[@href='/ua/uk-ua/eat/special_offers/best_burgers.html']"));
+    }
+
+    public HomePage clickLearnMoreForYourUpdatedBurgers() {
+        getLearnMoreForYourUpdatedBurgers().click();
         return this;
     }
 

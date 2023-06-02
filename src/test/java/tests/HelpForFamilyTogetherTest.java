@@ -10,16 +10,14 @@ public class HelpForFamilyTogetherTest extends TestInit {
 
         HomePage homePage = new HomePage(driver);
 
-
-        homePage
-                .clickArrowMovePrevious()
+        homePage.clickArrowMovePrevious()
                 .clickLearnMoreBtnForHelpForFamilyTogatherPage();
 
-        assertTrue(driver.getCurrentUrl().contains("rmhc.org.ua"));
+        assertTrue(driver.getCurrentUrl().contains("donate/?dest=rooms"));
     }
 
     @Test
-    public void checkHelpForFamilyTogetherTest(){
+    public void checkHelpForFamilyTogetherTest() {
 
 
         HomePage homePage = new HomePage(driver);
