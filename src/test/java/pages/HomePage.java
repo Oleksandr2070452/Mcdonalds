@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomePage extends HomeElements {
@@ -36,6 +37,7 @@ public class HomePage extends HomeElements {
     }
 
     public HomePage clickArrowMovePrevious() {
+        waitElement("//button[@class='cmp-carousel__action cmp-carousel__action--previous']", Conditions.VISIBILITY);
         getArrowInSliderMovePrevious().click();
         return this;
     }
@@ -233,12 +235,13 @@ public class HomePage extends HomeElements {
     }
 
     public WebElement getLearnMoreBtnForHelpForFamilyTogatherPage() {
-        return driver.findElement(By.xpath("//a[@href='https://rmhc.org.ua/?lang=uk']"));
+        return driver.findElement(By.xpath("//a[@href='https://rmhc.org.ua/donate/?dest=rooms']"));
     }
 
     public HomePage clickLearnMoreBtnForHelpForFamilyTogatherPage() {
-        waitElement("//a[@href='https://rmhc.org.ua/?lang=uk']", Conditions.VISIBILITY);
+        waitElement("//a[@href='https://rmhc.org.ua/donate/?dest=rooms']", Conditions.VISIBILITY);
         getLearnMoreBtnForHelpForFamilyTogatherPage().click();
+        moveToNextPage();
         return this;
     }
 
@@ -261,6 +264,7 @@ public class HomePage extends HomeElements {
         return this;
     }
 
+
     public WebElement getMcDonaldInUkraine() {
         return driver.findElement(By.xpath("//a[@href='/ua/uk-ua/to_know/mcdonalds_in_ukraine.html']"));
     }
@@ -269,4 +273,8 @@ public class HomePage extends HomeElements {
         getMcDonaldInUkraine().click();
         return this;
     }
-}
+        public List<WebElement> getSliderCarouselIndicators () {
+            return driver.findElements(By.className("@class='cmp-carousel__indicator"));
+
+        }
+    }

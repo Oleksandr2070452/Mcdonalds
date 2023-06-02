@@ -10,25 +10,6 @@ public class HelpForFamilyTogetherPage extends BasePage {
         super(driver);
     }
 
-    public WebElement getSupportFamiliesNow() {
-        return driver.findElement(By.xpath("//div/div[1]/div[1]/ul/li[2]/a"));
-    }
-
-    public HelpForFamilyTogetherPage clickSupportFamiliesNow() {
-        waitElement("//body/header/div/div[1]/ul/li[2]/a", Conditions.VISIBILITY);
-        getSupportFamiliesNow().click();
-        return this;
-    }
-
-    public WebElement getDonationHelpBtn() {
-        return driver.findElement(By.xpath("//div[@id='support-now']/div/div/div[1]/div[2]/div/a"));
-    }
-
-    public HelpForFamilyTogetherPage clickDonationHelpBtn() {
-        getDonationHelpBtn().click();
-        return this;
-    }
-
     public WebElement getSumDonation25grn() {
         return driver.findElement(By.xpath("//span[@data-value='25']"));
     }

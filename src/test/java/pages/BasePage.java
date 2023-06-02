@@ -4,6 +4,7 @@ import conditions.Conditions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,12 +93,15 @@ public class BasePage {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", element);
     }
+
     protected WebElement waitUntilElementToBeClickableByXpath(String locator) {
         return wait.until(elementToBeClickable(By.xpath(locator)));
     }
-    public static void moveToNextPage(){
+
+    public static void moveToNextPage() {
         ArrayList<String> switchToWindow = new ArrayList<>
                 (driver.getWindowHandles());
         driver.switchTo().window(switchToWindow.get(1));
     }
 }
+
