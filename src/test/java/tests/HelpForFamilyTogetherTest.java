@@ -6,22 +6,34 @@ import pages.HomePage;
 
 public class HelpForFamilyTogetherTest extends TestInit {
     @Test
-    public void checkHelpForFamilyTogetherTest() {
+    public void checkRedirectionTest() {
+
+        HomePage homePage = new HomePage(driver);
+
+
+        homePage
+                .clickArrowMovePrevious()
+                .clickLearnMoreBtnForHelpForFamilyTogatherPage();
+
+        assertTrue(driver.getCurrentUrl().contains("rmhc.org.ua"));
+    }
+
+    @Test
+    public void checkHelpForFamilyTogetherTest(){
+
 
         HomePage homePage = new HomePage(driver);
         HelpForFamilyTogetherPage helpForFamilyTogetherPage = new HelpForFamilyTogetherPage(driver);
 
-        homePage.clickArrowMovePrevious()
+        homePage
+                .clickArrowMovePrevious()
                 .clickLearnMoreBtnForHelpForFamilyTogatherPage();
 
-        assertTrue(driver.getCurrentUrl().contains("rmhc.org.ua"));
-
         helpForFamilyTogetherPage
-                .clickSupportFamiliesNow()
-                .clickDonationHelpBtn()
                 .clickSumDonation25grn()
                 .clickMakeDonateBtn();
 
         assertTrue(driver.getCurrentUrl().contains("liqpay.ua/uk/checkout/card/checkout"));
+
     }
 }
