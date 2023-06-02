@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomePage extends HomeElements {
@@ -36,6 +37,7 @@ public class HomePage extends HomeElements {
     }
 
     public HomePage clickArrowMovePrevious() {
+        waitElement("//button[@class='cmp-carousel__action cmp-carousel__action--previous']", Conditions.VISIBILITY);
         getArrowInSliderMovePrevious().click();
         return this;
     }
@@ -260,5 +262,9 @@ public class HomePage extends HomeElements {
     public HomePage clickLearnMoreForYourUpdatedBurgers() {
         getLearnMoreForYourUpdatedBurgers().click();
         return this;
+    }
+
+    public List<WebElement> getSliderCarouselIndicators() {
+        return driver.findElements(By.className("@class='cmp-carousel__indicator"));
     }
 }

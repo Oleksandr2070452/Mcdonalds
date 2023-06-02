@@ -15,13 +15,16 @@ public class HelpForFamilyTogetherTest extends TestInit {
 
         assertTrue(driver.getCurrentUrl().contains("donate/?dest=rooms"));
     }
+
     @Test
-    public void checkHelpForFamilyTogetherTest(){
+    public void checkHelpForFamilyTogetherTest() {
+
 
         HomePage homePage = new HomePage(driver);
         HelpForFamilyTogetherPage helpForFamilyTogetherPage = new HelpForFamilyTogetherPage(driver);
 
-        homePage.clickArrowMovePrevious()
+        homePage
+                .clickArrowMovePrevious()
                 .clickLearnMoreBtnForHelpForFamilyTogatherPage();
 
         helpForFamilyTogetherPage
@@ -29,5 +32,6 @@ public class HelpForFamilyTogetherTest extends TestInit {
                 .clickMakeDonateBtn();
 
         assertTrue(driver.getCurrentUrl().contains("liqpay.ua/uk/checkout/card/checkout"));
+
     }
 }
