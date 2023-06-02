@@ -6,13 +6,15 @@ import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 
-public class FeedbackPage extends BasePage{
+public class FeedbackPage extends BasePage {
     public FeedbackPage(WebDriver driver) {
         super(driver);
     }
+
     public WebElement getFormBtn() {
         return driver.findElement(By.xpath("//a[text()='Форма']"));
     }
+
     public FeedbackPage clickFormBtn() {
         getFormBtn().click();
         ArrayList<String> switchToWindow = new ArrayList<>

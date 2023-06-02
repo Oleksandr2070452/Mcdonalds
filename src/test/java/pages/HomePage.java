@@ -241,7 +241,7 @@ public class HomePage extends HomeElements {
     public HomePage clickLearnMoreBtnForHelpForFamilyTogatherPage() {
         waitElement("//a[@href='https://rmhc.org.ua/donate/?dest=rooms']", Conditions.VISIBILITY);
         getLearnMoreBtnForHelpForFamilyTogatherPage().click();
-        movEToNextWindow();
+        moveToNextPage();
         return this;
     }
 
@@ -264,7 +264,17 @@ public class HomePage extends HomeElements {
         return this;
     }
 
-    public List<WebElement> getSliderCarouselIndicators() {
-        return driver.findElements(By.className("@class='cmp-carousel__indicator"));
+
+    public WebElement getMcDonaldInUkraine() {
+        return driver.findElement(By.xpath("//a[@href='/ua/uk-ua/to_know/mcdonalds_in_ukraine.html']"));
     }
-}
+
+    public HomePage clickMcDonaldInUkraineBtn() {
+        getMcDonaldInUkraine().click();
+        return this;
+    }
+        public List<WebElement> getSliderCarouselIndicators () {
+            return driver.findElements(By.className("@class='cmp-carousel__indicator"));
+
+        }
+    }

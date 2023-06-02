@@ -14,6 +14,6 @@ public class FeedbackTest extends TestInit {
         homePage.clickFeedBackBtn();
         feedbackPage.clickFormBtn();
 
-        assertTrue(driver.getCurrentUrl().contains("to_know/mcdonalds_in_ukraine/feedback.html"));
+        assertTrue(driver.getCurrentUrl().contains("ukr/feedback/"));
     }
 }

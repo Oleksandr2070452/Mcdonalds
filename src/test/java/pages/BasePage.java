@@ -98,7 +98,7 @@ public class BasePage {
         return wait.until(elementToBeClickable(By.xpath(locator)));
     }
 
-    public static void movEToNextWindow() {
+    public static void moveToNextPage() {
         ArrayList<String> switchToWindow = new ArrayList<>
                 (driver.getWindowHandles());
         driver.switchTo().window(switchToWindow.get(1));
